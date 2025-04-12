@@ -39,18 +39,6 @@ A modern, responsive portfolio website built with HTML, CSS, and JavaScript. Fea
 
 3. Open `docs/index.html` in your browser to view the site locally
 
-## 📂 Project Structure
-
-```
-docs/
-├── index.html          # Main portfolio page
-├── 404.html           # Custom 404 error page
-├── assets/
-│   ├── img/           # Images and logos
-│   ├── particles.js   # Particle animation config
-│   └── styles.css     # Main stylesheet
-```
-
 ## 🌐 Deployment
 
 This site is configured for GitHub Pages deployment from the `docs` folder. To deploy:
