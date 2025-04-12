@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Surya Pratap Singh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap");
+
+      html,
+      body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        position: relative;
+      }
+
+      .montserrat {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      #particles {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+
+      #content {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+      }
+
+      .social-icon {
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        transform: translateY(-3px);
+      }
+
+      .g-red {
+        color: #dc2626;
+      }
+      .g-green {
+        color: #16a34a;
+      }
+      .g-yellow {
+        color: #ca8a04;
+      }
+      .g-blue {
+        color: #2563eb;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body class="bg-gray-50 text-gray-900 montserrat">
+    <div id="particles" class="h-full"></div>
+    <div id="content" class="relative z-10">
+      <!-- Navbar -->
+      <header class="p-4 flex justify-center">
+        <nav class="flex justify-between bg-white/0 container rounded-lg p-4">
+          <div>
+            <h1
+              class="text-[16px] font-semibold uno text-black backdrop-blur-none"
+            >
+              <a href="index.html">Surya Pratap Singh</a>
+            </h1>
+          </div>
+          <div class="uno flex gap-4 text-[16px]">
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <!-- <a
+              href="https://drive.google.com/file/d/136mguOd22YqIubKQOsFRXU2u8Ob5O8-c/view"
+              target="_blank"
+              >Resume</a
+            > -->
+          </div>
+        </nav>
+      </header>
+
+      <!-- Main Content -->
+      <main class="max-w-6xl mx-auto px-4 py-10">
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold text-center text-gray-800">
+            🛠️ Projects
+          </h1>
+          <p class="text-center text-gray-600 mt-2">
+            Explore my projects and learn more about my skills and experience.
+          </p>
+        </div>
+
+        <!-- CarePluse -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://carepluse-health.vercel.app/"
+            target="_blank"
+            class="block w-full lg:w-[55%]"
+          >
+            <img
+              src="assets/img/care.png"
+              alt="CarePluse Dashboard"
+              class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+            />
+          </a>
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">
+              CarePluse - Healthcare Management.
+            </h2>
+            <p class="text-black mb-2 text-justify">
+              An innovative healthcare management platform that simplifies
+              clinic operations and enhances patient care. Built with Next.js
+              and Appwrite to deliver a seamless experience for all
+              stakeholders.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Modern Stack:</strong> Developed with Next.js 14 for
+                optimal performance and SEO-friendly rendering.
+              </p>
+              <p>
+                <strong>Smart Features:</strong> Intelligent appointment system,
+                medical records, and real-time notifications.
+              </p>
+              <p>
+                <strong>Secure Platform:</strong> Role-based access control and
+                encrypted data handling with Appwrite backend.
+              </p>
+              <p>
+                <strong>Clean Design:</strong> Intuitive interface with Tailwind
+                CSS for responsive and accessible UI.
+              </p>
+              <p>
+                <strong>Use Case:</strong> Perfect for clinics seeking to
+                modernize patient care and management.
+              </p>
+            </div>
+
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://carepluse-health.vercel.app/"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+                >🔗 Live</a
+              >
+              <a
+                href="https://github.com/sp201004/CarePluse"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-black hover:text-black"
+                aria-label="GitHub repository for CarePluse"
+              >
+                <i class="bi bi-github"></i>
+                <span class="text-blue-600">GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drivex -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://drivexstorage.vercel.app/"
+            target="_blank"
+            class="block w-full lg:w-[55%]"
+          >
+            <img
+              src="assets/img/drivex.png"
+              alt="Drivex UI"
+              class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+            />
+          </a>
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">
+              Drivex - Your Personal Storage
+            </h2>
+            <p class="text-black mb-2 text-justify">
+              A modern cloud storage platform designed for seamless file
+              management and secure sharing. Built with Next.js 15 and Appwrite,
+              Drivex combines powerful features with an intuitive user
+              experience.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Next.js 15:</strong> Built with the latest app router
+                and server components for optimal performance and SEO.
+              </p>
+              <p>
+                <strong>Secure Backend:</strong> Leveraged Appwrite for
+                authentication, file storage, and role-based access control.
+              </p>
+              <p>
+                <strong>Modern UI/UX:</strong> Intuitive interface with
+                drag-and-drop uploads, file previews, and responsive Tailwind
+                CSS design.
+              </p>
+              <p>
+                <strong>Performance:</strong> Implemented lazy loading, chunked
+                uploads, and client-side caching for fast file transfers.
+              </p>
+              <p>
+                <strong>Key Features:</strong> Secure sharing, folder
+                organization, and search functionality for efficient cloud
+                storage.
+              </p>
+            </div>
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://drivexstorage.vercel.app/"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+                >🔗 Live
+              </a>
+              <a
+                href="https://github.com/sp201004/Drivex-Your-Personal-Storage"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-black hover:text-black"
+                aria-label="GitHub repository for Drivex"
+              >
+                <i class="bi bi-github"></i>
+                <span class="text-blue-600">GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- HR Dashboard -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://github.com/sp201004/HR-Analytics-Dashboard"
+            target="_blank"
+            class="block w-full lg:w-[55%]"
+          >
+            <img
+              src="assets/img/hr.png"
+              alt="HR Dashboard"
+              class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+            />
+          </a>
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">HR Analytics Dashboard</h2>
+            <p class="text-black mb-2 text-justify">
+              A comprehensive HR data visualization dashboard built using
+              Tableau Desktop. This project transforms raw CSV-based HR data
+              into meaningful insights, enabling informed decisions for
+              workforce planning and performance tracking.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Platform:</strong> Developed in Tableau Desktop using
+                structured HR data from CSV files.
+              </p>
+              <p>
+                <strong>Interactive Insights:</strong> Dynamic dashboards with
+                filters for department, job role, attrition, and performance
+                levels.
+              </p>
+              <p>
+                <strong>Visualization Techniques:</strong> Leveraged bar charts,
+                line graphs etc. to enhance interpretability.
+              </p>
+              <p>
+                <strong>Data Handling:</strong> Pre-processed and cleaned data
+                using Tableau Prep and built calculated fields for deeper
+                insights.
+              </p>
+              <p>
+                <strong>Key Features:</strong> Employee demographics, attrition
+                analysis, satisfaction metrics, and headcount trends.
+              </p>
+            </div>
+
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://github.com/sp201004/HR-Analytics-Dashboard"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-black hover:text-black"
+                aria-label="GitHub repository for HR Dashboard"
+              >
+                <i class="bi bi-github"></i>
+                <span class="text-blue-600">GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Micromouse Maze Game -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://sp201004.github.io/Micromouse_Maze/"
+            target="_blank"
+            class="block w-full lg:w-[55%]"
+          >
+            <img
+              src="assets/img/maze.png"
+              alt="Micromouse Maze Game"
+              class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+            />
+          </a>
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">Micromouse Maze Game</h2>
+            <p class="text-black mb-2 text-justify">
+              An interactive maze-solving game that allows users to design
+              custom mazes, set start and end points, and visualize the shortest
+              path using pathfinding algorithms like Breadth-First Search and
+              Depth-First Search.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Custom Maze Design:</strong> Add or remove blocks to
+                create unique mazes.
+              </p>
+              <p>
+                <strong>Interactive Controls:</strong> Set start and destination
+                points, and automatically calculate the shortest path.
+              </p>
+              <p>
+                <strong>Pathfinding Visualization:</strong> Watch as the
+                algorithm searches for the best route.
+              </p>
+              <p>
+                <strong>Responsive Interface:</strong> Fully responsive and
+                user-friendly design.
+              </p>
+              <p>
+                <strong>Use Case:</strong> Ideal for individuals interested in
+                pathfinding algorithms and maze-solving techniques.
+              </p>
+            </div>
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://sp201004.github.io/Micromouse_Maze/"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+                >🔗 Live
+              </a>
+              <a
+                href="https://github.com/sp201004/Micromouse_Maze"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-black hover:text-black"
+                aria-label="GitHub repository for Micromouse Maze Game"
+              >
+                <i class="bi bi-github"></i>
+                <span class="text-blue-600">GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Figma Design Section Heading -->
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold text-center text-gray-800">
+            🎨 Figma Design Projects
+          </h2>
+          <p class="text-center text-gray-600 mt-2">
+            UI/UX prototypes created in Figma for various apps and systems.
+          </p>
+        </div>
+
+        <!-- NITA ID Card Design (Updated with Clickable Frame) -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://www.figma.com/design/dg2k07o3bJefq0G1rr3lCD/NITA-ID-Card?m=auto&t=u4tbpvKQLiokRI0b-6"
+            target="_blank"
+            class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <iframe
+              class="pointer-events-none w-full h-[400px] mt-2"
+              src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/dg2k07o3bJefq0G1rr3lCD/NITA-ID-Card?m=auto&t=u4tbpvKQLiokRI0b-6"
+              allowfullscreen
+            ></iframe>
+          </a>
+
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">NITA ID Card – Design</h2>
+            <p class="text-black mb-2 text-justify">
+              A modern and minimal ID card concept designed for NIT Agartala
+              students. Focused on clean typography, institutional branding, and
+              practical layout.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Tool:</strong> Created using Figma with layered
+                components and auto layout.
+              </p>
+              <p>
+                <strong>Responsive Ready:</strong> Optimized for both print and
+                digital use.
+              </p>
+              <p>
+                <strong>Typography:</strong> Montserrat-based institutional
+                design style.
+              </p>
+              <p>
+                <strong>Use Case:</strong> For students, staff badges, or alumni
+                events.
+              </p>
+            </div>
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://www.figma.com/design/dg2k07o3bJefq0G1rr3lCD/NITA-ID-Card?m=auto&t=u4tbpvKQLiokRI0b-6"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+                >🔗 View in Figma</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Codejet Components – Community -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://www.figma.com/design/mD0YlJnMCmvgIGYYMg2MFB/Codejet-Components--Community-?m=auto&t=u4tbpvKQLiokRI0b-6"
+            target="_blank"
+            class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <iframe
+              class="pointer-events-none w-full h-[400px]"
+              src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/mD0YlJnMCmvgIGYYMg2MFB/Codejet-Components--Community-?m=auto&t=u4tbpvKQLiokRI0b-6"
+              allowfullscreen
+            ></iframe>
+          </a>
+
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">
+              Codejet Components – Community Design
+            </h2>
+            <p class="text-black mb-2 text-justify">
+              A community-driven UI library made in Figma. Showcases reusable
+              components like buttons, modals, forms, and layouts to accelerate
+              design workflows.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Reusable Components:</strong> Tailored for developers &
+                designers building in React or Tailwind.
+              </p>
+              <p>
+                <strong>Collaborative Design:</strong> Built as a shared Figma
+                playground for contributions and upgrades.
+              </p>
+              <p>
+                <strong>Modern Design System:</strong> Follows atomic structure
+                and scalable naming.
+              </p>
+              <p>
+                <strong>Use Case:</strong> Open-source projects, design systems,
+                or prototyping UI libraries.
+              </p>
+            </div>
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://www.figma.com/design/mD0YlJnMCmvgIGYYMg2MFB/Codejet-Components--Community-?m=auto&t=u4tbpvKQLiokRI0b-6"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+                >🔗 View in Figma</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- CarePluse System Design -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://www.figma.com/design/oMQ25pYGKT1M4uNhgD5o1s/CarePluse-System?m=auto&t=ek0GYMJVvgqnfhHx-1"
+            target="_blank"
+            class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <iframe
+              class="pointer-events-none w-full h-[400px]"
+              src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/oMQ25pYGKT1M4uNhgD5o1s/CarePluse-System?m=auto&t=ek0GYMJVvgqnfhHx-1"
+              allowfullscreen
+            ></iframe>
+          </a>
+
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">
+              CarePluse System – UI Design
+            </h2>
+            <p class="text-black mb-2 text-justify">
+              A thoughtfully structured healthcare app concept built with a
+              focus on user-friendly UI for managing patient records,
+              appointments, and doctor-patient interactions.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Platform:</strong> Designed in Figma using grids and
+                smart layout components.
+              </p>
+              <p>
+                <strong>Key Screens:</strong> Includes dashboard, appointment
+                booking, records, doctor profiles, and more.
+              </p>
+              <p>
+                <strong>Modern Aesthetic:</strong> Clean, accessible, and
+                professional UI elements tailored for healthcare use cases.
+              </p>
+              <p>
+                <strong>Use Case:</strong> For developers and designers creating
+                hospital, clinic, or telemedicine platforms.
+              </p>
+            </div>
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://www.figma.com/design/oMQ25pYGKT1M4uNhgD5o1s/CarePluse-System?m=auto&t=ek0GYMJVvgqnfhHx-1"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+              >
+                🔗 View in Figma
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Zoom Clone – Figma Design -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://www.figma.com/design/cxkuQ5DlXpLVKNFnMhWdTD/Zoom-Clone?m=auto&t=AqiuLq5A4rcAUn4L-6"
+            target="_blank"
+            class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <iframe
+              class="pointer-events-none w-full h-[400px]"
+              src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/cxkuQ5DlXpLVKNFnMhWdTD/Zoom-Clone?m=auto&t=AqiuLq5A4rcAUn4L-6"
+              allowfullscreen
+            ></iframe>
+          </a>
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">Zoom Clone – UI Design</h2>
+            <p class="text-black mb-2 text-justify">
+              A video conferencing platform UI inspired by Zoom. Features modern
+              layouts for meetings, participants, chats, and controls.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Design Tool:</strong> Built in Figma with reusable
+                components.
+              </p>
+              <p>
+                <strong>Use Case:</strong> Video chat apps, webinar tools, and
+                remote communication UIs.
+              </p>
+            </div>
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://www.figma.com/design/cxkuQ5DlXpLVKNFnMhWdTD/Zoom-Clone?m=auto&t=AqiuLq5A4rcAUn4L-6"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+              >
+                🔗 View in Figma
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modern Minimal Portfolio – Figma Design -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
+          <a
+            href="https://www.figma.com/design/VeKNjELEH2NUjN4M6IkKTV/Modern-Minimal-Portfolio?m=auto&t=gsDCibTr09pvqabS-6"
+            target="_blank"
+            class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <iframe
+              class="pointer-events-none w-full h-[400px]"
+              src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/VeKNjELEH2NUjN4M6IkKTV/Modern-Minimal-Portfolio?m=auto&t=gsDCibTr09pvqabS-6"
+              allowfullscreen
+            ></iframe>
+          </a>
+          <div class="w-full lg:w-[45%]">
+            <h2 class="text-2xl font-medium mb-3">Modern Minimal Portfolio</h2>
+            <p class="text-black mb-2 text-justify">
+              A stylish and clean portfolio template perfect for designers and
+              developers who want to showcase their work in a minimal way.
+            </p>
+            <div class="text-black space-y-1 text-justify">
+              <p class="mt-4">
+                <strong>Design Approach:</strong> Focused on whitespace, modern
+                fonts, and smooth section transitions.
+              </p>
+              <p>
+                <strong>Use Case:</strong> Perfect for personal portfolios,
+                landing pages, or one-page resumes.
+              </p>
+            </div>
+            <div class="flex gap-4 text-sm mt-2">
+              <a
+                href="https://www.figma.com/design/VeKNjELEH2NUjN4M6IkKTV/Modern-Minimal-Portfolio?m=auto&t=gsDCibTr09pvqabS-6"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+              >
+                🔗 View in Figma
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="text-center p-4 text-xl">
+        Made with <i class="bi bi-heart-fill text-red-500"></i> by
+        <a href="index.html" class="text-blue-600">Surya</a>.
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="assets/particles.js"></script>
+    <script>
+      const socialIcons = document.getElementsByClassName("social-icon");
+      const colorClasses = ["g-red", "g-green", "g-yellow", "g-blue"];
+
+      Array.from(socialIcons).forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          const randomColor =
+            colorClasses[Math.floor(Math.random() * colorClasses.length)];
+          el.classList.add(randomColor);
+        });
+        el.addEventListener("mouseleave", () => {
+          for (let index = 0; index < el.classList.length; index++) {
+            const element = el.classList[index];
+            if (colorClasses.includes(element)) {
+              el.classList.remove(element);
+              break;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

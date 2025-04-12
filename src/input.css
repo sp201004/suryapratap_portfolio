@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+html,
+body {
+  height: 100%;
+}
+
+.montserrat {
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  position: relative;
+}
+
+#particles,
+#content {
+  position: absolute;
+}
+
+.uno > a {
+  position: relative;
+  color: #222222;
+  text-decoration: none;
+}
+
+.uno > a:hover {
+  color: #000;
+}
+
+.uno > a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -8px;
+  left: 0;
+  background-color: #000;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.uno > a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.r-logo {
+  @apply w-1/2;
+  @apply sm:w-1/3;
+  @apply md:w-1/5;
+}
+
+.g-red {
+  color: #db3236 !important;
+}
+.g-green {
+  color: #3cba54 !important;
+}
+.g-yellow {
+  color: #f4c20d !important;
+}
+.g-blue {
+  color: #4885ed !important;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll::-webkit-scrollbar-track {
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #1e2328;
+  border-radius: 999px;
+}
