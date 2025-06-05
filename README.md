@@ -28,13 +28,13 @@ A modern, responsive portfolio website built with HTML, CSS, and JavaScript. Fea
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/sp201004/surya_portfolio.git
+   git clone https://github.com/sp201004/suryapratap_portfolio.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd surya_portfolio.github.io
+   cd suryapratap_portfolio.github.io
    ```
 
 3. Open `docs/index.html` in your browser to view the site locally
