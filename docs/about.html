@@ -287,6 +287,73 @@
             </div>
           </div>
 
+          <!-- LeetCode Stats Section -->
+          <div class="card p-8">
+            <h2 class="text-2xl font-semibold mb-6">🏆 Competitive Programming</h2>
+            
+            <!-- LeetCode Profile -->
+            <div class="mb-6">
+              <div class="flex items-center gap-3 mb-4">
+                <img src="https://leetcode.com/static/images/LeetCode_logo.png" alt="LeetCode" class="w-10 h-10">
+                <h3 class="text-xl font-semibold">LeetCode Profile</h3>
+              </div>
+              
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Left Column - Problem Solving Stats (Live) -->
+                <div class="space-y-4">
+                  <div class="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-lg border border-green-200 min-h-[140px] flex items-center justify-center">
+                    <div class="text-center">
+                      <div class="text-4xl font-bold text-green-700" id="total-solved">1080</div>
+                      <div class="text-gray-600 text-sm mt-1">Problems Solved</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Easy / Medium / Hard - Horizontal Compact Row -->
+                  <div class="grid grid-cols-3 gap-2">
+                    <div class="bg-blue-50 p-2 rounded-lg border border-blue-200 text-center">
+                      <div class="text-xs text-gray-600 mb-1">Easy</div>
+                      <div class="text-sm font-bold text-blue-700"><span id="easy-solved">330</span> / 918</div>
+                    </div>
+                    <div class="bg-yellow-50 p-2 rounded-lg border border-yellow-200 text-center">
+                      <div class="text-xs text-gray-600 mb-1">Medium</div>
+                      <div class="text-sm font-bold text-yellow-700"><span id="medium-solved">617</span> / 1978</div>
+                    </div>
+                    <div class="bg-red-50 p-2 rounded-lg border border-red-200 text-center">
+                      <div class="text-xs text-gray-600 mb-1">Hard</div>
+                      <div class="text-sm font-bold text-red-700"><span id="hard-solved">133</span> / 896</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Right Column - Contest Rating & Ranking -->
+                <div class="space-y-4">
+                  <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200 min-h-[140px] flex items-center justify-center">
+                    <div class="text-center">
+                      <div class="text-4xl font-bold text-purple-700">1,948</div>
+                      <div class="text-gray-600 text-sm mt-1">Contest Rating</div>
+                      <div class="text-lg font-semibold text-purple-600 mt-2">Max: 2,012</div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex justify-between items-center bg-orange-50 p-3 rounded-lg border border-orange-200">
+                    <span class="text-gray-700 font-medium">Global Rank</span>
+                    <span class="font-bold text-orange-700" id="global-rank">25,617</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- View Profile Button -->
+              <div class="text-center">
+                <a href="https://leetcode.com/u/sp0104/" target="_blank" 
+                   class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  <i class="bi bi-code-square"></i>
+                  View LeetCode Profile
+                  <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
  
           
 <!-- Resume Section -->
@@ -417,6 +484,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="assets/particles.js"></script>
+    <script src="assets/leetcode-stats.js"></script>
     <script src="assets/darkMode.js"></script>
   </body>
 </html>
