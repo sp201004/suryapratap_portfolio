@@ -13,8 +13,18 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Surya Pratap Singh</title>
+  <title>About | Surya Pratap Singh</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Silence Tailwind CDN production warning (acceptable for static portfolio).
+    if (window && window.console) {
+      const _w = console.warn;
+      console.warn = function (m) {
+        if (typeof m === 'string' && m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        _w.apply(console, arguments);
+      };
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -42,6 +52,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      opacity: 0.28;
     }
 
     #content {
@@ -56,9 +67,114 @@
     footer {
       margin-top: auto;
     }
+
+    /* ===== About Me — aligned with portfolio system ===== */
+    .about-card { max-width: none; }
+
+    .about-card .about-prose p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #1f2937; /* gray-800 */
+      margin-bottom: 18px;
+    }
+    .about-card .about-prose p:last-child { margin-bottom: 0; }
+    .about-card .about-prose strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .about-card .about-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      color: #475569;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .about-card .about-meta i { color: #ef4444; font-size: 14px; }
+
+    .about-card .about-section-label {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #111827; /* gray-900, matches H3s elsewhere */
+      margin-top: 28px;
+      margin-bottom: 14px;
+    }
+
+    .about-card .about-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .about-card .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1f2937;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .about-card .about-list li:hover {
+      background: rgba(59, 130, 246, 0.05);
+      transform: translateX(2px);
+    }
+    .about-card .about-list .ico {
+      flex: none;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(59, 130, 246, 0.08);
+      color: #2563eb;
+      font-size: 15px;
+    }
+    .about-card .about-list strong { color: #0f172a; font-weight: 600; }
+
+    .about-card .about-closing {
+      margin-top: 28px;
+      font-size: 16px;
+      color: #1f2937;
+      line-height: 1.75;
+    }
+    .about-card .about-quote {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 17px;
+      color: #475569;
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      .about-card .about-prose p { font-size: 16px; line-height: 1.75; }
+      .about-card .about-section-label { font-size: 17px; margin-top: 24px; }
+      .about-card .about-list li { padding: 10px 10px; font-size: 14.5px; gap: 12px; }
+      .about-card .about-list .ico { width: 30px; height: 30px; font-size: 14px; }
+    }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Surya Pratap Singh | Software Engineer" />
+  <meta property="og:site_name" content="Surya Pratap Singh | Portfolio" />
+  <meta property="og:url" content="https://surya-portfolio-blue.vercel.app/about.html" />
+  <meta property="og:description" content="Software Engineer Intern @Amdocs | Computer Science graduate from NIT Agartala specializing in Cloud-Native, Kubernetes, AIOps, and Platform Engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://surya-portfolio-blue.vercel.app/assets/img/logo.png" />
 </head>
 
 <body class="montserrat">
@@ -78,7 +194,7 @@
           <a href="about.html">About</a>
           <!-- <a
               href="https://drive.google.com/file/d/136mguOd22YqIubKQOsFRXU2u8Ob5O8-c/view"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               >Resume</a
             > -->
         </div>
@@ -88,74 +204,72 @@
     <main class="container mx-auto px-4 py-8 flex flex-col items-center justify-center">
       <div class="space-y-8 max-w-4xl w-full">
         <!-- Introduction -->
-        <div class="card p-8">
+        <div class="p-8 about-card">
           <h1 class="text-4xl font-medium mb-6 text-center text-black backdrop-blur-none">
             🙋‍♂️ About Me
           </h1>
 
-          <p class="text-[17px] text-gray-800 mb-3 leading-relaxed">
-            Hi, I'm <span class="font-semibold">Surya Pratap Singh</span>, a <span class="font-semibold">Computer
-              Science and Engineering</span> undergraduate at <span class="font-semibold">National Institute of
-              Technology, Agartala</span>, with a strong interest in building scalable, high-quality software systems. I
-            enjoy solving complex problems and translating ideas into clean, efficient, and user-focused applications.
-          </p>
+          <div class="about-prose">
+            <p>
+              I’m a <strong>Software Engineer Intern at Amdocs</strong> and a Computer Science graduate from <strong>NIT Agartala</strong>. I build cloud-native platforms — the kind that sit between developers and infrastructure and make complicated systems feel simple.
+            </p>
+            <p>
+              At Amdocs I work on <strong>mCloud</strong>, an in-house private cloud provisioning platform replacing the legacy VMware vRA stack. The work spans <strong>Node.js</strong> microservices, async orchestration through <strong>RabbitMQ → Jenkins → Fission</strong>, secret management with <strong>Hashicorp Vault</strong>, and SSO via <strong>Azure Entra ID (OIDC)</strong> — all running on <strong>Kubernetes</strong> with <strong>Istio</strong> handling traffic.
+            </p>
+            <p>
+              Before mCloud, I shipped an end-to-end <strong>AIOps platform</strong>: <strong>Prometheus</strong> and the <strong>ELK stack</strong> for observability, <strong>FastAPI</strong> for the agent layer, and <strong>Ansible</strong> for closed-loop remediation, reducing manual operational overhead through automated remediation workflows.
+            </p>
+          </div>
 
-          <p class="text-[17px] text-gray-800 mb-3 leading-relaxed">
-            I bring a balanced mindset that combines strong <span class="font-semibold">problem-solving
-              fundamentals</span>, <span class="font-semibold">data-driven thinking</span>, and <span
-              class="font-semibold">practical development experience</span>. Whether it's designing intuitive user
-            interfaces, analyzing system behavior, or structuring maintainable codebases, I focus on clarity,
-            performance, and long-term scalability. I believe good software is not just functional, but thoughtfully
-            engineered and informed by meaningful insights.
-          </p>
+          <div class="mt-5">
+            <span class="about-meta"><i class="bi bi-geo-alt-fill"></i> Pune, Maharashtra, India</span>
+          </div>
 
-          <p class="text-[16px] text-gray-800 mb-4">
-            📍 <span class="font-semibold">Current Location:</span> Agartala, Tripura, India
-          </p>
-
-          <p class="text-[16px] text-gray-800 mb-2 font-semibold">
-            🎯 What I'm Focused On:
-          </p>
-
-          <ul class="list-none mt-2 space-y-2 text-[15px]">
-            <li>🎓 Pursuing <span class="font-semibold">B.Tech in Computer Science & Engineering</span> at <span
-                class="font-semibold">NIT Agartala</span></li>
-            <li>🧠 Strengthening <span class="font-semibold">algorithmic thinking and problem-solving</span> using <span
-                class="font-semibold">C/C++</span>, while applying analytical reasoning to break down complex problems
+          <p class="about-section-label">🎯 What I work on</p>
+          <ul class="about-list">
+            <li>
+              <span class="ico"><i class="bi bi-cloud-fill"></i></span>
+              <span>Cloud-native and private-cloud provisioning platforms — <strong>Kubernetes, Istio, Fission</strong></span>
             </li>
-            <li>📊 Developing a growing interest in <span class="font-semibold">data analytics</span>, including working
-              with structured datasets, extracting insights, and supporting decision-making using data</li>
-            <li>📚 Building deep foundations in core CS subjects including <span class="font-semibold">Data Structures &
-                Algorithms (DSA), Object-Oriented Programming (OOPs), Operating Systems (OS), Database Management
-                Systems (DBMS), and Computer Networks (CN)</span>, with additional exposure to <span
-                class="font-semibold">Computer Network & Security (CNS), and Artificial Intelligence (AI)</span></li>
-            <li>💻 Developing modern, production-ready web applications using <span class="font-semibold">React,
-                Next.js, TypeScript, TailwindCSS, ShadCN</span>, and backend services like <span
-                class="font-semibold">Appwrite</span></li>
-            <li>🎨 Creating clean and accessible <span class="font-semibold">UI/UX</span>, with emphasis on <span
-                class="font-semibold">performance, usability</span>, and measuring improvements through user behavior
-              and feedback</li>
-            <li>☁️ Exploring <span class="font-semibold">backend systems, cloud concepts</span>, and data-aware
-              architectures, including <span class="font-semibold">databases, authentication</span>, and scalable
-              application design</li>
-            <li>🚀 Continuously improving through <span class="font-semibold">hands-on projects, self-learning</span>,
-              and real-world experimentation</li>
+            <li>
+              <span class="ico"><i class="bi bi-code-slash"></i></span>
+              <span><strong>Node.js</strong> and <strong>FastAPI</strong> microservices with clean REST APIs</span>
+            </li>
+            <li>
+              <span class="ico"><i class="bi bi-shield-lock-fill"></i></span>
+              <span>Enterprise auth — <strong>Azure Entra ID, OIDC, JWT, CSRF</strong></span>
+            </li>
+            <li>
+              <span class="ico"><i class="bi bi-graph-up-arrow"></i></span>
+              <span>Observability and <strong></strong>Agentic AIOps</strong> — <strong>Prometheus, ELK</strong>, Isolation Forest + rule-based anomaly detection, deterministic remediation</span>
+            </li>
+            <li>
+              <span class="ico"><i class="bi bi-database-fill-gear"></i></span>
+              <span>Localized orchestration on <strong>Kubernetes / Docker</strong> over <strong>RHEL 9</strong>, with enterprise database lifecycle management for <strong>production environments</strong> — <strong>SQL &amp; Oracle DB</strong> installations, migrations, and refresh automations</span>
+            </li>
+            <li>
+              <span class="ico"><i class="bi bi-robot"></i></span>
+              <span>Intelligent IT automation for <strong>production environments</strong> through <strong>Agentic AI</strong> workflows in <strong>LangChain</strong> and <strong>n8n</strong> — proactive anomaly detection for self-healing infrastructure and faster incident response</span>
+            </li>
+            <li>
+              <span class="ico"><i class="bi bi-diagram-3-fill"></i></span>
+              <span>Distributed systems, service mesh, and event-driven architectures (<strong>RabbitMQ, Jenkins</strong>)</span>
+            </li>
+            <li>
+              <span class="ico"><i class="bi bi-cpu-fill"></i></span>
+              <span>1100+ DSA problems on LeetCode (1948 contest rating, Knight badge) in <strong>C/C++</strong></span>
+            </li>
           </ul>
 
-          <p class="text-[16px] text-gray-800 mt-4 leading-relaxed">
-            I'm actively seeking opportunities where I can apply my skills in <span class="font-semibold">software
-              development and analytics</span>, collaborate with experienced engineers, and continue growing as a <span
-              class="font-semibold">Software Developer / Analytics-oriented Engineer</span> while contributing to
-            impactful, well-engineered products.
+          <p class="about-closing">
+            Open to roles in <strong>platform engineering, cloud infrastructure, AIOps / SRE, and backend systems</strong> — happy to talk about scalable, reliable software.
           </p>
 
-          <p class="text-lg italic text-center mt-6">
-            ❝ Building the future, one line of code at a time ❞
-          </p>
+          <p class="about-quote">❝ Building the future, one line of code at a time ❞</p>
         </div>
 
         <!-- Education -->
-        <div class="card p-8">
+        <div class="p-8">
           <h2 class="text-2xl font-semibold mb-6">🎓 Education</h2>
           <div class="space-y-6">
             <div>
@@ -163,7 +277,7 @@
                 Bachelor of Technology in Computer Science and Engineering
               </h3>
               <p class="text-gray-600">
-                National Institute of Technology, Agartala - 2022 – Present
+                National Institute of Technology, Agartala - 2022 – 2026
               </p>
             </div>
 
@@ -185,65 +299,637 @@
           </div>
         </div>
 
-        <!-- Skills -->
-        <div class="card p-8">
+        <!-- Licenses & Certifications Grid -->
+        <div class="card p-8 bg-white/50 backdrop-blur-md rounded-2xl shadow-xl">
+          <h2 class="text-2xl font-semibold mb-6 text-gray-900 border-b pb-3 border-gray-100">🏅 Licenses & Certifications</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- 1. Google Cybersecurity Suite (Blue Theme) -->
+            <div id="cert-google-cyber" class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 shadow-sm flex flex-col h-full col-span-1 md:col-span-2">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-4xl text-blue-600">🛡️</span>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-950 mb-1">Google Cybersecurity Professional Certificate</h3>
+                  <p class="text-base font-extrabold text-blue-800 mb-4">Google Career Certificates (Coursera)</p>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/50 p-4 rounded-lg border border-blue-100/50 mb-4 text-xs text-gray-700">
+                <div>
+                  <p class="font-bold text-blue-900 mb-1">Core Skills:</p>
+                  <p class="leading-relaxed font-medium">Linux, SQL, Python, SIEM, IDS, Incident Response, Risk Management, Network Security</p>
+                </div>
+                <div>
+                  <p class="font-bold text-blue-900 mb-1">What I Learned:</p>
+                  <ul class="list-disc ml-4 space-y-1">
+                    <li>Identified cybersecurity threats, vulnerabilities, and attack vectors.</li>
+                    <li>Monitored security events using SIEM and IDS technologies.</li>
+                    <li>Investigated security incidents and applied response procedures.</li>
+                    <li>Used Linux, SQL, and Python for security operations and automation.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 9 course modules breakdown -->
+              <div class="bg-white/40 border border-gray-200/60 shadow-inner rounded-xl p-4 mt-2">
+                <h4 class="font-bold text-gray-900 text-xs mb-3">Completed Specialization Tracks & Core Focus Areas:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">1. Foundations of Cybersecurity</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">CIA triad, risk management, and cybersecurity fundamentals.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">2. Play It Safe: Manage Risks</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Security frameworks, controls, governance, and risk assessments.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">3. Connect & Protect: Networks</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">TCP/IP, DNS, routing, and network defense concepts.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">4. Tools of the Trade: Linux & SQL</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Linux command line, user permissions, and SQL queries.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">5. Assets, Threats, & Vulnerabilities</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Threat modeling, vulnerability scanning, and asset protection.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">6. Sound the Alarm: Detect & Respond</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Incident detection, SIEM monitoring, and response workflows.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">7. Automate Tasks with Python</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Python scripting, automation, and security log analysis.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">8. Prepare for Cybersecurity Jobs</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Portfolio development, resume review, and interview prep.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">9. Accelerate Job Search with AI</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">AI-assisted optimization, application techniques, and prep.</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                <a href="https://coursera.org/verify/professional-cert/PFLWNDADP5KM" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-blue-300 text-blue-700 rounded-lg hover:bg-blue-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-blue-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 2. IBM Power Systems Suite (Red/Stone Theme) -->
+            <div id="cert-ibm-power" class="bg-gradient-to-r from-red-50 to-stone-100 p-6 rounded-lg border border-red-200 shadow-sm flex flex-col h-full col-span-1 md:col-span-2">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-4xl text-red-600">🐧</span>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-950 mb-1">Linux & Private Cloud Administration on IBM Power Systems</h3>
+                  <p class="text-base font-extrabold text-red-800 mb-4">IBM + Red Hat (Coursera)</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/50 p-4 rounded-lg border border-red-150 mb-4 text-xs text-gray-700">
+                <div>
+                  <p class="font-bold text-red-900 mb-1">Core Skills:</p>
+                  <p class="leading-relaxed font-medium">RHEL, Linux Administration, IBM Power Systems, AIX, Private Cloud, Virtualization</p>
+                </div>
+                <div>
+                  <p class="font-bold text-red-900 mb-1">What I Learned:</p>
+                  <ul class="list-disc ml-4 space-y-1">
+                    <li>Gained enterprise-level system administration skills using RHEL on IBM Power servers.</li>
+                    <li>Integrated private cloud architecture, handling storage and virtualization operations.</li>
+                    <li>Performed advanced operations bridging AIX systems to modern enterprise Linux workflows.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 3 course modules breakdown -->
+              <div class="bg-white/40 border border-gray-200/60 shadow-inner rounded-xl p-4 mt-2">
+                <h4 class="font-bold text-gray-900 text-xs mb-3">Completed Specialization Tracks & Core Focus Areas:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">1. Fundamentals of Red Hat Enterprise Linux</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Red Hat commands, shell environment, permissions, and basic configuration.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">2. Linux Admin with IBM Power Systems</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Managing file systems, users, directories, server configs, and optimization.</p>
+                    </div>
+                  </div>
+
+                  <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all">
+                    <div>
+                      <p class="font-bold text-gray-800 text-xs mb-0.5">3. Linux for AIX Administrators</p>
+                      <p class="text-[10px] text-gray-600 leading-tight">Translating AIX to Linux, virtual storage, networking, and scaling.</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                <a href="https://coursera.org/verify/specialization/YJCHWXFLT81L" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-red-300 text-red-700 rounded-lg hover:bg-red-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-red-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 3. NVIDIA - Introduction to Networking -->
+            <div id="cert-nvidia" class="bg-gradient-to-r from-sky-50 to-blue-105 p-6 rounded-lg border border-sky-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">🌐</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Introduction to Networking</h3>
+                <p class="text-base font-extrabold text-sky-800 mb-4">NVIDIA (Coursera)</p>
+                
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-sky-150">
+                  <div>
+                    <p class="text-xs font-bold text-sky-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Networking Fundamentals, TCP/IP, DNS, Routing, Switching</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-sky-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Mastered foundational OSI and TCP/IP network layers.</li>
+                      <li>Learned IP routing, switches, subnets, and DNS resolution.</li>
+                      <li>Implemented standard diagnostic tools and networking protocols.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-sky-200">
+                <a href="https://coursera.org/verify/4DY4POE0INEN" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-sky-300 text-sky-700 rounded-lg hover:bg-sky-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-sky-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 4. Linux Shell Scripting -->
+            <div id="cert-udemy-shell" class="bg-gradient-to-r from-fuchsia-50 to-pink-100 p-6 rounded-lg border border-fuchsia-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">💻</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Linux Shell Scripting: Project-Based</h3>
+                <p class="text-base font-extrabold text-fuchsia-800 mb-4">Udemy</p>
+                
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-fuchsia-150">
+                  <div>
+                    <p class="text-xs font-bold text-fuchsia-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Bash Scripting, Linux administration, Process automation</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-fuchsia-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Authored robust Bash scripts to automate administrative tasks.</li>
+                      <li>Programmed conditionals, loops, structures, and CLI arguments.</li>
+                      <li>Implemented error checking and automated log processors.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-fuchsia-200">
+                <a href="https://www.udemy.com/certificate/UC-ebfc7317-6cb9-4547-a0ed-201e5c21acc9/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-fuchsia-300 text-fuchsia-700 rounded-lg hover:bg-fuchsia-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-fuchsia-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 5. Linux Crash Course -->
+            <div id="cert-udemy-crash" class="bg-gradient-to-r from-indigo-50 to-purple-100 p-6 rounded-lg border border-indigo-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">🐧</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Linux Crash Course for Beginners</h3>
+                <p class="text-base font-extrabold text-indigo-800 mb-4">Udemy</p>
+                
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-indigo-150">
+                  <div>
+                    <p class="text-xs font-bold text-indigo-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Linux Administration, Bash, User Permissions, File Management</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-indigo-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Learned standard filesystems, permission masks, and process signals.</li>
+                      <li>Configured software dependencies and initialized package repositories.</li>
+                      <li>Monitored CPU load, memory utilization, and hardware storage usage.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-indigo-200">
+                <a href="https://www.udemy.com/certificate/UC-dfec1d9a-703a-4662-9762-9d2de28c5130/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-indigo-300 text-indigo-700 rounded-lg hover:bg-indigo-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-indigo-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 6. IIT Madras - Python Course -->
+            <div id="cert-iitm" class="bg-gradient-to-r from-teal-50 to-emerald-100 p-6 rounded-lg border border-teal-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">🐍</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Python Course on Multiple Languages</h3>
+                <p class="text-base font-extrabold text-teal-800 mb-4">CODE, IIT Madras & GUVI</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-teal-150">
+                  <div>
+                    <p class="text-xs font-bold text-teal-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Python, Object-Oriented Programming, Logic design</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-teal-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Programmed robust Python scripts using object-oriented principles.</li>
+                      <li>Managed standard collection library, datatypes, and dictionaries.</li>
+                      <li>Designed optimized logic workflows to parse system outputs.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-teal-200 text-xs italic text-gray-500 font-medium">
+                Academic Outreach Program
+              </div>
+            </div>
+
+            <!-- 7. Ansible Automation -->
+            <div id="cert-ansible" class="bg-gradient-to-r from-orange-50 to-amber-100 p-6 rounded-lg border border-orange-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">⚙️</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Ansible for the Absolute Beginner</h3>
+                <p class="text-base font-extrabold text-orange-800 mb-4">Udemy & KodeKloud</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-orange-150">
+                  <div>
+                    <p class="text-xs font-bold text-orange-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Infrastructure as Code (IaC), Ansible, DevOps automation</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-orange-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Devised functional Ansible configurations, playbooks, tasks, and handler workflows.</li>
+                      <li>Created scalable inventory management profiles and template structures.</li>
+                      <li>Automated typical administrative setups and security environments.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-orange-200">
+                <a href="https://www.udemy.com/certificate/UC-3a9f1b14-5aea-4b41-bb8d-f2b68179d589/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-orange-300 text-orange-700 rounded-lg hover:bg-orange-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-orange-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 8. VMware Admin -->
+            <div id="cert-vmware" class="bg-gradient-to-r from-purple-50 to-fuchsia-100 p-6 rounded-lg border border-purple-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">☁️</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">VMware vSphere Administration</h3>
+                <p class="text-base font-extrabold text-purple-800 mb-4">Udemy</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-purple-150">
+                  <div>
+                    <p class="text-xs font-bold text-purple-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Virtualization, Hypervisors, vSphere ESXi, VMware Systems</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-purple-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Deployed guest platforms via VMware ESXi hypervisor hosts.</li>
+                      <li>Allocated virtual server storage, CPU cores, and virtual memory profiles.</li>
+                      <li>Configured virtual networking segments and logical communication switches.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-purple-200">
+                <a href="https://www.udemy.com/certificate/UC-e4292ac4-38d0-410a-a01f-b94106e1cfda/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-purple-300 text-purple-700 rounded-lg hover:bg-purple-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-purple-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 9. Google Cloud -->
+            <div id="cert-gcp" class="bg-gradient-to-r from-cyan-50 to-blue-100 p-6 rounded-lg border border-cyan-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">✨</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Digital Transformation with Google Cloud</h3>
+                <p class="text-base font-extrabold text-cyan-800 mb-4">Google Cloud (Coursera)</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-cyan-150">
+                  <div>
+                    <p class="text-xs font-bold text-cyan-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Cloud Infrastructure, Cloud Adoption Strategy, DevOps Foundations</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-cyan-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Learned standard cloud patterns: VM scaling, serverless, VPC networks.</li>
+                      <li>Analyzed cloud migration strategies, cost structures, and operations.</li>
+                      <li>Explored standard identity controls and hybrid architecture plans.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-cyan-200">
+                <a href="https://coursera.org/verify/2CSJX2VYQ4YJ" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-cyan-300 text-cyan-700 rounded-lg hover:bg-cyan-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-cyan-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 10. GFG Cloud Bootcamp -->
+            <div id="cert-gfg" class="bg-gradient-to-r from-green-50 to-emerald-100 p-6 rounded-lg border border-green-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">🚀</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Cloud Bootcamp Program</h3>
+                <p class="text-base font-extrabold text-green-800 mb-4">GeeksforGeeks</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-green-150">
+                  <div>
+                    <p class="text-xs font-bold text-green-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Cloud Architecture, Managed Services, Virtual Machines, Scaling</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-green-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Designed basic high-availability structures with VMs and networks.</li>
+                      <li>Acquired deployment strategy, database, and system backup knowledge.</li>
+                      <li>Explored containerization, cluster orchestration, and networking.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-green-200 text-xs italic text-gray-500 font-medium">
+                Google Developers Sponsored Track
+              </div>
+            </div>
+
+            <!-- 11. Deloitte Data Analytics -->
+            <div id="cert-deloitte" class="bg-gradient-to-r from-emerald-50 via-slate-50 to-indigo-100 p-6 rounded-lg border border-emerald-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">📊</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Data Analytics Job Simulation</h3>
+                <p class="text-base font-extrabold text-emerald-800 mb-4">Deloitte (via Forage)</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-emerald-150">
+                  <div>
+                    <p class="text-xs font-bold text-emerald-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Data Modeling, Analytics, Forensic Systems, Interpretation</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-emerald-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Performed analytical simulation workflows on enterprise telemetry datasets.</li>
+                      <li>Presented core forensic insights, indicators of compromise, and issues.</li>
+                      <li>Used structured spreadsheet logic and query parameters for forensic reporting.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-emerald-200 text-[11px] text-gray-600 font-bold">
+                Verification Code: qGYxpdfXwKyBp9yZp
+              </div>
+            </div>
+
+            <!-- 12. IIM Ahmedabad - Leadership Skills -->
+            <div id="cert-iima-leader" class="bg-gradient-to-r from-amber-50 to-orange-100 p-6 rounded-lg border border-amber-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">👑</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Leadership Skills</h3>
+                <p class="text-base font-extrabold text-amber-800 mb-4">IIM Ahmedabad (Coursera)</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-amber-150">
+                  <div>
+                    <p class="text-xs font-bold text-amber-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Executive Communication, Tactical Action, Conflict Management</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-amber-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Trained on structural team management models and operations.</li>
+                      <li>Evaluated critical situations to outline responsive project directions.</li>
+                      <li>Acquired decision framework principles to manage remote operations.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-amber-200">
+                <a href="https://coursera.org/verify/9MHTFPG63KHX" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-amber-300 text-amber-855 rounded-lg hover:bg-amber-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-amber-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 13. IIM Ahmedabad - Advanced Leadership Skills -->
+            <div id="cert-iima-adv" class="bg-gradient-to-r from-amber-50 to-orange-100 p-6 rounded-lg border border-amber-200 flex flex-col h-full hover:shadow-lg transition-all duration-300">
+              <div class="flex-shrink-0 bg-white p-3 rounded-xl shadow-sm w-fit mb-4"><span class="text-3xl">🏛️</span></div>
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-gray-950 mb-1">Advanced Leadership Skills</h3>
+                <p class="text-base font-extrabold text-amber-800 mb-4">IIM Ahmedabad (Coursera)</p>
+
+                <div class="space-y-3 bg-white/60 p-3 rounded-lg border border-amber-150">
+                  <div>
+                    <p class="text-xs font-bold text-amber-900">Core Skills:</p>
+                    <p class="text-[11px] text-gray-700 leading-tight font-medium">Strategic Planning, Operational Scaling, Corporate Strategy</p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-bold text-amber-900">What I Learned:</p>
+                    <ul class="list-disc ml-4 text-[11px] text-gray-700 space-y-0.5 mt-1">
+                      <li>Structured high-level cross-functional plans under market risk variables.</li>
+                      <li>Analyzed performance telemetry and configured optimization workflows.</li>
+                      <li>Designed framework protocols guiding scalable enterprise project models.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-amber-200">
+                <a href="https://coursera.org/verify/5645DDWMESDS" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-amber-300 text-amber-855 rounded-lg hover:bg-amber-50 transition-all duration-300 font-medium text-xs">
+                  <i class="bi bi-patch-check-fill text-amber-600"></i> Verify Credential <i class="bi bi-box-arrow-up-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- 14. Diploma in Computer Application (DCA) -->
+            <div id="cert-dca" class="bg-gradient-to-r from-stone-100 via-stone-55 to-neutral-200 p-6 rounded-lg border border-neutral-300 flex flex-col h-full col-span-1 md:col-span-2 hover:shadow-lg transition-all duration-300 bg-white/60">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-4xl">📜</span>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-950 mb-1">Diploma in Computer Application (DCA)</h3>
+                  <p class="text-base font-extrabold text-stone-700 mb-4">Wave Institute of Information Technology & Society</p>
+                  <p class="text-gray-500 text-xs">Grade: Excellent • Regd. No: AZ-19837</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/60 p-4 rounded-lg border border-neutral-200/50 text-xs text-gray-700">
+                <div>
+                  <p class="font-bold text-neutral-850 mb-1">Core Skills:</p>
+                  <p class="font-medium leading-relaxed">Computer Systems, Microsoft Suite, Networking, HTML foundations, Tally</p>
+                </div>
+                <div>
+                  <p class="font-bold text-neutral-850 mb-1">What I Learned:</p>
+                  <ul class="list-disc ml-4 space-y-0.5">
+                    <li>Developed full digital literacy across hardware, networks, and services.</li>
+                    <li>Gained proficiency in spreadsheet designs, documentation, and tools.</li>
+                    <li>Learned core hypermedia elements (HTML) and web fundamentals.</li>
+                    <li>Worked with HTML basics and accounting software (Tally).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Skills Section (No card wrapper) -->
+        <div class="p-8">
           <h2 class="text-2xl font-semibold mb-6">💡 Skills</h2>
 
           <!-- Programming Languages -->
           <div class="mb-6">
-            <h3 class="text-[18px] font-medium mb-3">
-              Programming Languages
-            </h3>
+            <h3 class="text-[18px] font-medium mb-3">Programming Languages</h3>
             <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">C/C++</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">Python</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Java</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-indigo-100 text-indigo-900 rounded-full hover:bg-indigo-200 transition duration-300">JavaScript</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-cyan-100 text-cyan-900 rounded-full hover:bg-cyan-200 transition duration-300">TypeScript</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">C/C++</span>
+              <span class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">Python</span>
+              <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Java</span>
+              <span class="px-3 py-1.5 text-sm bg-indigo-100 text-indigo-900 rounded-full hover:bg-indigo-200 transition duration-300">JavaScript</span>
+              <span class="px-3 py-1.5 text-sm bg-cyan-100 text-cyan-900 rounded-full hover:bg-cyan-200 transition duration-300">TypeScript</span>
+              <span class="px-3 py-1.5 text-sm bg-rose-100 text-rose-900 rounded-full hover:bg-rose-200 transition duration-300">HTML</span>
+              <span class="px-3 py-1.5 text-sm bg-sky-100 text-sky-900 rounded-full hover:bg-sky-200 transition duration-300">CSS</span>
+              <span class="px-3 py-1.5 text-sm bg-gray-200 text-gray-900 rounded-full hover:bg-gray-300 transition duration-300">Bash</span>
+              <span class="px-3 py-1.5 text-sm bg-slate-200 text-slate-900 rounded-full hover:bg-slate-300 transition duration-300">Shell Script</span>
             </div>
           </div>
 
-          <!-- Web Technologies -->
+          <!-- Computer Science Fundamentals -->
           <div class="mb-6">
-            <h3 class="text-[18px] font-medium mb-3">Web Technologies</h3>
+            <h3 class="text-[18px] font-medium mb-3">Computer Science Fundamentals</h3>
             <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-sm bg-purple-100 text-purple-900 rounded-full hover:bg-purple-200 transition duration-300">HTML</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-pink-100 text-pink-900 rounded-full hover:bg-pink-200 transition duration-300">CSS</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full hover:bg-green-200 transition duration-300">Node.js</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full hover:bg-red-200 transition duration-300">React</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition duration-300">Next.js</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-teal-100 text-teal-900 rounded-full hover:bg-teal-200 transition duration-300">TailwindCSS</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-slate-100 text-slate-900 rounded-full hover:bg-slate-200 transition duration-300">ShadCN</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-rose-100 text-rose-900 rounded-full hover:bg-rose-200 transition duration-300">Appwrite</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">Data Structures & Algorithms</span>
+              <span class="px-3 py-1.5 text-sm bg-purple-100 text-purple-900 rounded-full hover:bg-purple-200 transition duration-300">OOPs</span>
+              <span class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full hover:bg-green-200 transition duration-300">Operating Systems</span>
+              <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">DBMS</span>
+              <span class="px-3 py-1.5 text-sm bg-cyan-100 text-cyan-900 rounded-full hover:bg-cyan-200 transition duration-300">Computer Networks</span>
             </div>
           </div>
 
-          <!-- Database -->
+          <!-- Web Technologies & Frameworks -->
           <div class="mb-6">
-            <h3 class="text-[18px] font-medium mb-3">Database</h3>
+            <h3 class="text-[18px] font-medium mb-3">Web Technologies & Frameworks</h3>
             <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-sm bg-yellow-200 text-yellow-900 rounded-full hover:bg-yellow-300 transition duration-300">SQL</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">MySQL</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-teal-100 text-teal-900 rounded-full hover:bg-teal-200 transition duration-300">SQLite</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-rose-100 text-rose-900 rounded-full hover:bg-rose-200 transition duration-300">Appwrite
-                Database</span>
+              <span class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full hover:bg-green-200 transition duration-300">Node.js</span>
+              <span class="px-3 py-1.5 text-sm bg-teal-100 text-teal-900 rounded-full hover:bg-teal-200 transition duration-300">FastAPI</span>
+              <span class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full hover:bg-red-200 transition duration-300">React</span>
+              <span class="px-3 py-1.5 text-sm bg-gray-100 text-gray-900 hover:bg-gray-200 rounded-full transition duration-300">Next.js</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">TailwindCSS</span>
+              <span class="px-3 py-1.5 text-sm bg-zinc-200 text-zinc-900 hover:bg-zinc-300 rounded-full transition duration-300">ShadCN</span>
+              <span class="px-3 py-1.5 text-sm bg-pink-100 text-pink-900 rounded-full hover:bg-pink-200 transition duration-300">Appwrite</span>
+              <span class="px-3 py-1.5 text-sm bg-emerald-100 text-emerald-900 rounded-full hover:bg-emerald-200 transition duration-300">RESTful APIs</span>
+            </div>
+          </div>
+
+          <!-- Cloud, DevOps & Platform Engineering -->
+          <div class="mb-6">
+            <h3 class="text-[18px] font-medium mb-3">Cloud, DevOps & Platform Engineering</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-sm bg-sky-100 text-sky-900 rounded-full hover:bg-sky-200 transition duration-300">Docker</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">Kubernetes</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">KIND</span>
+              <span class="px-3 py-1.5 text-sm bg-indigo-100 text-indigo-900 rounded-full hover:bg-indigo-200 transition duration-300">kubectl</span>
+              <span class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full hover:bg-green-200 transition duration-300">Nginx</span>
+              <span class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full hover:bg-red-200 transition duration-300">Ansible</span>
+              <span class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">YAML</span>
+              <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">RabbitMQ</span>
+              <span class="px-3 py-1.5 text-sm bg-gray-200 text-gray-900 hover:bg-gray-300 rounded-full transition duration-300">Jenkins</span>
+              <span class="px-3 py-1.5 text-sm bg-indigo-100 text-indigo-900 rounded-full hover:bg-indigo-200 transition duration-300">Fission (Serverless)</span>
+              <span class="px-3 py-1.5 text-sm bg-sky-100 text-sky-900 rounded-full hover:bg-sky-200 transition duration-300">VMware vSphere</span>
+              <span class="px-3 py-1.5 text-sm bg-sky-100 text-sky-900 rounded-full hover:bg-sky-200 transition duration-300">VMware ESXi</span>
+            </div>
+          </div>
+
+          <!-- Databases & Operating Systems -->
+          <div class="mb-6">
+            <h3 class="text-[18px] font-medium mb-3">Databases & Operating Systems</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">SQL</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">MySQL</span>
+              <span class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full hover:bg-red-200 transition duration-300">Oracle</span>
+              <span class="px-3 py-1.5 text-sm bg-sky-100 text-sky-900 rounded-full hover:bg-sky-200 transition duration-300">PostgreSQL</span>
+              <span class="px-3 py-1.5 text-sm bg-cyan-100 text-cyan-900 rounded-full hover:bg-cyan-200 transition duration-300">Windows</span>
+              <span class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">Linux (RHEL 9)</span>
+              <span class="px-3 py-1.5 text-sm bg-stone-200 text-stone-900 hover:bg-stone-300 rounded-full transition duration-300">AIX</span>
+              <span class="px-3 py-1.5 text-sm bg-zinc-200 text-zinc-900 hover:bg-zinc-300 rounded-full transition duration-300">macOS (Unix)</span>
+            </div>
+          </div>
+
+          <!-- Observability & Security -->
+          <div class="mb-6">
+            <h3 class="text-[18px] font-medium mb-3">Observability & Security</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Prometheus & Grafana</span>
+              <span class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">ELK Stack</span>
+              <span class="px-3 py-1.5 text-sm bg-slate-200 text-slate-900 hover:bg-slate-300 rounded-full transition duration-300">Hashicorp Vault</span>
+              <span class="px-3 py-1.5 text-sm bg-teal-100 text-teal-900 rounded-full hover:bg-teal-200 transition duration-300">SIEM & IDS</span>
+              <span class="px-3 py-1.5 text-sm bg-rose-100 text-rose-900 rounded-full hover:bg-rose-200 transition duration-300">Azure Entra ID (OIDC)</span>
+            </div>
+          </div>
+
+          <!-- AI & Automation -->
+          <div class="mb-6">
+            <h3 class="text-[18px] font-medium mb-3">AI & Automation</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-sm bg-emerald-100 text-emerald-900 rounded-full hover:bg-emerald-200 transition duration-300">LangChain</span>
+              <span class="px-3 py-1.5 text-sm bg-fuchsia-100 text-fuchsia-900 rounded-full hover:bg-fuchsia-200 transition duration-300">n8n</span>
+              <span class="px-3 py-1.5 text-sm bg-purple-100 text-purple-900 rounded-full hover:bg-purple-200 transition duration-300">Workflow Automation</span>
+              <span class="px-3 py-1.5 text-sm bg-indigo-100 text-indigo-900 rounded-full hover:bg-indigo-200 transition duration-300">AI Agents</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">SQL DB Refresh Automation</span>
+              <span class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full hover:bg-red-200 transition duration-300">DB Migration</span>
+              <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Oracle DB Installation</span>
+            </div>
+          </div>
+
+          <!-- Tools & Productivity -->
+          <div class="mb-6">
+            <h3 class="text-[18px] font-medium mb-3">Tools & Productivity</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 text-sm bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition duration-300">Git & GitHub</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">VS Code</span>
+              <span class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full hover:bg-green-200 transition duration-300">MS Excel</span>
+              <span class="px-3 py-1.5 text-sm bg-[#4e79a7] text-white rounded-full hover:bg-[#3b5c84] transition duration-300">Tableau</span>
+              <span class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">Linux (Shell Scripting)</span>
             </div>
           </div>
 
@@ -251,56 +937,16 @@
           <div class="mb-6">
             <h3 class="text-[18px] font-medium mb-3">Design Tools</h3>
             <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Figma</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-pink-200 text-pink-900 rounded-full hover:bg-pink-300 transition duration-300">Canva</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition duration-300">Sketch</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">Adobe
-                Photoshop</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-purple-100 text-purple-900 rounded-full hover:bg-purple-200 transition duration-300">Adobe
-                Illustrator</span>
-            </div>
-          </div>
-
-          <!-- Tools & Technologies -->
-          <div class="mb-6">
-            <h3 class="text-[18px] font-medium mb-3">Tools & Technologies</h3>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Git</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition duration-300">GitHub</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">VS
-                Code</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full hover:bg-green-200 transition duration-300">MS
-                Excel</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-[#4e79a7] text-white rounded-full hover:bg-[#3b5c84] transition duration-300">Tableau</span>
-            </div>
-          </div>
-
-          <!-- Operating Systems -->
-          <div>
-            <h3 class="text-[18px] font-medium mb-3">Operating Systems</h3>
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">Windows</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">Linux</span>
-              <span
-                class="px-3 py-1.5 text-sm bg-gray-100 text-gray-900 rounded-full hover:bg-gray-200 transition duration-300">macOS</span>
+              <span class="px-3 py-1.5 text-sm bg-pink-100 text-pink-900 rounded-full hover:bg-pink-200 transition duration-300">Figma</span>
+              <span class="px-3 py-1.5 text-sm bg-cyan-100 text-cyan-900 rounded-full hover:bg-cyan-200 transition duration-300">Canva</span>
+              <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">Adobe Photoshop</span>
+              <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Sketch</span>
             </div>
           </div>
         </div>
 
-        <!-- LeetCode Stats Section -->
-        <div class="card p-8">
+        <!-- Competitive Programming -->
+        <div class="p-8">
           <h2 class="text-2xl font-semibold mb-6">🏆 Competitive Programming</h2>
 
           <!-- LeetCode Profile -->
@@ -311,13 +957,13 @@
             </div>
 
             <!-- Stats Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 items-stretch">
               <!-- Left Column - Problem Solving Stats (Live) -->
-              <div class="space-y-4">
+              <div class="flex flex-col gap-4">
                 <div
-                  class="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-lg border border-green-200 min-h-[140px] flex items-center justify-center">
+                  class="flex-1 bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-lg border border-green-200 min-h-[170px] flex items-center justify-center">
                   <div class="text-center">
-                    <div class="text-4xl font-bold text-green-700" id="total-solved">1080</div>
+                    <div class="text-4xl font-bold text-green-700" id="total-solved">1101</div>
                     <div class="text-gray-600 text-sm mt-1">Problems Solved</div>
                   </div>
                 </div>
@@ -326,52 +972,57 @@
                 <div class="grid grid-cols-3 gap-2">
                   <div class="bg-blue-50 p-2 rounded-lg border border-blue-200 text-center">
                     <div class="text-xs text-gray-600 mb-1">Easy</div>
-                    <div class="text-sm font-bold text-blue-700"><span id="easy-solved">330</span> / 918</div>
+                    <div class="text-sm font-bold text-blue-700"><span id="easy-solved">333</span> / <span id="total-easy">946</span></div>
                   </div>
                   <div class="bg-yellow-50 p-2 rounded-lg border border-yellow-200 text-center">
                     <div class="text-xs text-gray-600 mb-1">Medium</div>
-                    <div class="text-sm font-bold text-yellow-700"><span id="medium-solved">617</span> / 1978</div>
+                    <div class="text-sm font-bold text-yellow-700"><span id="medium-solved">628</span> / <span id="total-medium">2061</span></div>
                   </div>
                   <div class="bg-red-50 p-2 rounded-lg border border-red-200 text-center">
                     <div class="text-xs text-gray-600 mb-1">Hard</div>
-                    <div class="text-sm font-bold text-red-700"><span id="hard-solved">133</span> / 896</div>
+                    <div class="text-sm font-bold text-red-700"><span id="hard-solved">140</span> / <span id="total-hard">937</span></div>
                   </div>
                 </div>
               </div>
 
               <!-- Right Column - Contest Rating & Ranking -->
-              <div class="space-y-4">
+              <div class="flex flex-col gap-4">
                 <div
-                  class="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200 min-h-[140px] flex items-center justify-center">
+                  class="flex-1 bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200 min-h-[170px] flex items-center justify-center">
                   <div class="text-center">
-                    <div class="text-4xl font-bold text-purple-700">1,948</div>
-                    <div class="text-gray-600 text-sm mt-1">Contest Rating</div>
-                    <div class="text-lg font-semibold text-purple-600 mt-2">Max: 2,012</div>
+                    <!-- Live values fetched by leetcode-stats.js; numbers below are fallback -->
+                    <div class="flex items-center justify-center gap-3 flex-wrap">
+                      <div class="text-4xl font-bold text-purple-700" id="contest-rating">1,948</div>
+                      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-amber-100 text-amber-800 text-xs font-bold rounded-full border border-amber-200">
+                        <i class="bi bi-shield-fill"></i> <span id="contest-badge">Knight</span>
+                      </span>
+                    </div>
+                    <div class="text-gray-600 text-sm mt-1">Contest Rating <span class="text-gray-400">·</span> Max <span class="font-semibold text-purple-700" id="max-rating">2,012</span></div>
                   </div>
                 </div>
 
                 <div class="flex justify-between items-center bg-orange-50 p-3 rounded-lg border border-orange-200">
                   <span class="text-gray-700 font-medium">Global Rank</span>
-                  <span class="font-bold text-orange-700" id="global-rank">25,617</span>
+                  <span class="font-bold text-orange-700" id="global-rank">28,410</span>
                 </div>
               </div>
             </div>
 
             <!-- View Profile Button -->
             <div class="text-center">
-              <a href="https://leetcode.com/u/sp0104/" target="_blank"
-                class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white rounded-lg font-medium hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <a href="https://leetcode.com/u/sp0104/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-orange-300 text-orange-700 rounded-lg font-medium hover:bg-orange-50 hover:border-orange-400 transition-all duration-300 text-sm shadow-sm">
                 <i class="bi bi-code-square"></i>
                 View LeetCode Profile
-                <i class="bi bi-arrow-right"></i>
+                <i class="bi bi-box-arrow-up-right text-xs"></i>
               </a>
             </div>
           </div>
         </div>
 
 
-        <!-- Resume Section -->
-        <div class="card p-8">
+        <!-- Resumes -->
+        <div class="p-8">
           <h2 class="text-2xl font-semibold mb-6">📄 Resumes</h2>
           <p class="text-[17px] text-gray-800 mb-3 leading-relaxed">
             Here are my resumes for different domains:
@@ -380,7 +1031,7 @@
             <!-- CSE Resume -->
             <li>
               <a href="https://drive.google.com/file/d/1P-8FIuQ9twBfY-3v7peVgPAcgJwaFg12/view?usp=sharing"
-                target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-semibold">
                 Resume
               </a> – Highlights my Computer Science and Engineering background, focusing on programming, algorithms,
               data structures, and software development.
@@ -389,7 +1040,7 @@
             <!-- Analytics Resume -->
             <li>
               <a href="https://drive.google.com/file/d/1ZuXkNA8sqm-I4SQ_5WDruTe2fU5Dz6XG/view?usp=sharing"
-                target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+                target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-semibold">
                 Analytics Resume
               </a> – Showcases data storytelling skills through real-world projects using Power BI, Tableau, and Excel,
               with strengths in data cleaning, visualization, and decision-making insights.
@@ -398,72 +1049,39 @@
         </div>
 
 
-        <!-- Quote Section -->
-        <div class="card p-8 text-center">
-          <h2 class="text-2xl font-medium mb-6 text-gray-800/90 backdrop-blur-none">
-            💬 Quote
-          </h2>
-          <blockquote class="text-xl italic mb-4">
-            "Design is not just what it looks like and feels like. Design is
-            how it works."
-          </blockquote>
-          <p class="text-right">— Steve Jobs</p>
+        <!-- Quote -->
+        <div class="p-8 text-center">
+          <blockquote class="text-xl italic mb-4">"Design is not just what it looks like and feels like. Design is how it works."</blockquote>
+          <p class="text-center">— Steve Jobs</p>
         </div>
 
-        <!-- Resume -->
-        <!-- <div class="mt-6 flex justify-center">
-            <a
-              href="https://drive.google.com/file/d/136mguOd22YqIubKQOsFRXU2u8Ob5O8-c/view"
-              target="_blank"
-              class="card inline-flex items-center px-6 py-3 text-gray-800 hover:bg-gray-50 transition-all duration-300"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Download Resume
-            </a>
-          </div> -->
-
         <!-- Contact -->
-        <div class="card p-8">
+        <div class="p-8">
           <h2 class="text-xl font-semibold text-gray-800 mb-6">
             Get in Touch:
           </h2>
           <div class="flex flex-wrap justify-center gap-6">
-            <a href="https://github.com/sp201004" target="_blank"
+            <a href="https://github.com/sp201004" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-gray-800 hover:text-blue-600 transition-colors duration-300">
               <i class="bi bi-github text-2xl" style="color: #24292e"></i>
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/suryapratapsingh1/" target="_blank"
+            <a href="https://www.linkedin.com/in/suryapratapsingh1/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-gray-800 hover:text-blue-600 transition-colors duration-300">
               <i class="bi bi-linkedin text-2xl" style="color: #0077b6"></i>
               LinkedIn
             </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sp01042002@gmail.com" target="_blank"
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sp01042002@gmail.com" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-gray-800 hover:text-blue-600 transition-colors duration-300">
               <i class="bi bi-envelope text-2xl" style="color: #d80707"></i>
               Email
             </a>
-            <a href="https://outlook.office.com/mail/deeplink/compose?to=SURYA_22UCS074@ug.nita.ac.in" target="_blank"
-              class="inline-flex items-center gap-2 text-gray-800 hover:text-blue-600 transition-colors duration-300">
-              <img src="assets/img/outlook.png" alt="Outlook Logo" class="w-6 h-6">
-              Outlook EDU
-            </a>
-            <!-- <a
-                href="https://t.me/sp2010"
-                target="_blank"
-                class="inline-flex items-center gap-2 text-gray-800 hover:text-blue-600 transition-colors duration-300"
-              >
-                <i class="bi bi-telegram text-2xl" style="color: #0088cc"></i>
-                Telegram
-              </a> -->
-            <a href="https://wa.me/917309626731" target="_blank"
+            <a href="https://wa.me/917309626731" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-gray-800 hover:text-blue-600 transition-colors duration-300">
               <i class="bi bi-whatsapp text-2xl" style="color: #25d366"></i>
               WhatsApp
             </a>
-            <a href="https://x.com/truething33" target="_blank"
+            <a href="https://x.com/sp20_10/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-gray-800 hover:text-blue-600 transition-colors duration-300">
               <i class="bi bi-twitter-x" style="color: #000000"></i>
               Twitter
@@ -483,7 +1101,6 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="assets/particles.js"></script>
   <script src="assets/leetcode-stats.js"></script>
-  <script src="assets/darkMode.js"></script>
 </body>
 
 </html>

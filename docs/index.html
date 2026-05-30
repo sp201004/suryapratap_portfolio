@@ -15,6 +15,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Surya Pratap Singh | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Silence Tailwind CDN production warning (acceptable for static portfolio).
+    if (window && window.console) {
+      const _w = console.warn;
+      console.warn = function (m) {
+        if (typeof m === 'string' && m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        _w.apply(console, arguments);
+      };
+    }
+  </script>
   <link rel="stylesheet" href="assets/styles.css" />
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap");
@@ -51,8 +61,8 @@
 
   <meta name="title" content="Surya Pratap Singh | Portfolio" />
   <meta name="description"
-    content="Computer Science undergraduate at NIT Agartala. Passionate about C++, Python, backend systems, and solving real-world problems through technology." />
-  <meta name="keywords" content="Surya Pratap Singh, Surya, C++, Python, Backend Developer, NIT Agartala" />
+    content="Software Engineer Intern @Amdocs and Computer Science graduate from NIT Agartala — building cloud-native platforms with Kubernetes, Node.js, FastAPI, and Agentic AIOps." />
+  <meta name="keywords" content="Surya Pratap Singh, Software Engineer, Cloud Native, Platform Engineering, Kubernetes, Istio, AIOps, Agentic AI, Node.js, FastAPI, Amdocs, NIT Agartala" />
   <meta name="robots" content="index, follow" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="language" content="English" />
@@ -60,13 +70,12 @@
   <meta name="author" content="Surya Pratap Singh" />
 
   <!-- OG Tags -->
-  <meta property="og:title" content="Surya Pratap Singh | Portfolio" />
+  <meta property="og:title" content="Surya Pratap Singh | Software Engineer" />
   <meta property="og:site_name" content="Surya Pratap Singh | Portfolio" />
-  <meta property="og:url" content="https://yourdomain.com" />
-  <meta property="og:description"
-    content="CS student at NIT Agartala with expertise in C++, Python, and backend systems. Love building scalable solutions using code." />
+  <meta property="og:url" content="https://surya-portfolio-blue.vercel.app/" />
+  <meta property="og:description" content="Software Engineer Intern @Amdocs | Computer Science graduate from NIT Agartala specializing in Cloud-Native, Kubernetes, AIOps, and Platform Engineering." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://yourdomain.com/assets/img/profile.jpg" />
+  <meta property="og:image" content="https://surya-portfolio-blue.vercel.app/assets/img/logo.png" />
 </head>
 
 <body class="montserrat">
@@ -86,7 +95,7 @@
           <a href="about.html">About</a>
           <!-- <a
               href="https://drive.google.com/file/d/136mguOd22YqIubKQOsFRXU2u8Ob5O8-c/view"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               >Resume</a
             > -->
         </div>
@@ -104,16 +113,15 @@
 
       <!-- Updated bio with two lines -->
       <div class="text-lg font-semibold my-2 text-center">
-        <p>Software Engineer @Amdocs </p>
-        <p>Final Year Student @NIT Agartala</p>
-        <p>Programmer, Designer.</p>
+        <p>Software Engineer Intern @Amdocs </p>
+        <p>B.Tech CSE @NIT Agartala</p>
       </div>
 
       <div class="mt-4 flex flex-col items-center gap-1">
         <div>
           <img src="assets/img/location.png" alt="location icon" class="w-8" />
         </div>
-        <p class="font-semibold">Agartala, India</p>
+        <p class="font-semibold">Pune, Maharashtra, India</p>
       </div>
 
       <div class="mt-4 flex gap-6">
@@ -121,29 +129,25 @@
           title="Email" target="_blank" rel="noopener noreferrer">
           <i class="bi bi-envelope text-3xl"></i>
         </a>
-        <a href="https://outlook.office.com/mail/deeplink/compose?to=SURYA_22UCS074@ug.nita.ac.in"
-          class="text-3xl social-icon" title="Outlook Email" target="_blank" rel="noopener noreferrer">
-          <img src="assets/img/outlook2.png" alt="Outlook Logo" style="width: 30px; height: 30px;">
-        </a>
-        <a target="_blank" href="https://github.com/sp201004" class="text-3xl social-icon" title="GitHub">
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/sp201004" class="text-3xl social-icon" title="GitHub">
           <i class="bi bi-github"></i>
         </a>
-        <a target="_blank" href="https://www.linkedin.com/in/suryapratapsingh1/" class="text-3xl social-icon"
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/suryapratapsingh1/" class="text-3xl social-icon"
           title="LinkedIn">
           <i class="bi bi-linkedin"></i>
         </a>
-        <a target="_blank" href="https://wa.me/917309626731" class="text-3xl social-icon" title="WhatsApp">
+        <a target="_blank" rel="noopener noreferrer" href="https://wa.me/917309626731" class="text-3xl social-icon" title="WhatsApp">
           <i class="bi bi-whatsapp"></i>
         </a>
         <!-- <a
-            target="_blank"
+            target="_blank" rel="noopener noreferrer"
             href="https://t.me/sp_201004"
             class="text-3xl social-icon"
             title="Telegram"
           >
             <i class="bi bi-telegram"></i>
           </a> -->
-        <a target="_blank" href="https://x.com/truething33" class="text-3xl social-icon" title="X (Twitter)">
+        <a target="_blank" rel="noopener noreferrer" href="https://x.com/sp20_10/" class="text-3xl social-icon" title="X (Twitter)">
           <i class="bi bi-twitter-x"></i>
         </a>
       </div>
@@ -162,11 +166,11 @@
   <script>
     const typed = new Typed(".typed", {
       strings: [
-        "a Developer",
-        "a Designer",
-        "a Student",
-        "a Problem Solver",
-        "a Tech Enthusiast",
+        "a Software Engineer.",
+        "a Cloud & Infrastructure Developer.",
+        "an AIOps Engineer.",
+        "a Cybersecurity Enthusiast.",
+        "a Problem Solver."
       ],
       typeSpeed: 50,
       backSpeed: 25,

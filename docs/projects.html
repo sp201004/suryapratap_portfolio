@@ -15,6 +15,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Surya Pratap Singh</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Silence Tailwind CDN production warning (acceptable for static portfolio).
+    if (window && window.console) {
+      const _w = console.warn;
+      console.warn = function (m) {
+        if (typeof m === 'string' && m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        _w.apply(console, arguments);
+      };
+    }
+  </script>
   <link rel="stylesheet" href="assets/styles.css" />
   <link rel="icon" href="assets/favicon.ico" />
   <style>
@@ -72,6 +82,14 @@
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Surya Pratap Singh | Software Engineer" />
+  <meta property="og:site_name" content="Surya Pratap Singh | Portfolio" />
+  <meta property="og:url" content="https://surya-portfolio-blue.vercel.app/projects.html" />
+  <meta property="og:description" content="Software Engineer Intern @Amdocs | Computer Science graduate from NIT Agartala specializing in Cloud-Native, Kubernetes, AIOps, and Platform Engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://surya-portfolio-blue.vercel.app/assets/img/logo.png" />
 </head>
 
 <body class="bg-gray-50 text-gray-900 montserrat">
@@ -92,7 +110,7 @@
           <a href="about.html">About</a>
           <!-- <a
               href="https://drive.google.com/file/d/136mguOd22YqIubKQOsFRXU2u8Ob5O8-c/view"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               >Resume</a
             > -->
         </div>
@@ -112,7 +130,7 @@
 
       <!-- CollabCanvas - Real-Time Collaborative Drawing Canvas -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://collabcanvas-flam.vercel.app/" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://collabcanvas-flam.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/collabcanvas.png" alt="CollabCanvas UI"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -172,7 +190,7 @@
 
       <!-- MoodTracker -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://moodtracker-pi.vercel.app/" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://moodtracker-pi.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/moodtracker.png" alt="MoodTracker UI"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -226,7 +244,7 @@
 
       <!-- TalentFlow -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://talentflow-entnt-career.vercel.app/" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://talentflow-entnt-career.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/talentflow.png" alt="TalentFlow UI"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -282,7 +300,7 @@
 
       <!-- PhonePe Dashboard -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://github.com/sp201004/PhonePe-Digital-Payment-Analytics-Dashboard" target="_blank"
+        <a href="https://github.com/sp201004/PhonePe-Digital-Payment-Analytics-Dashboard" target="_blank" rel="noopener noreferrer"
           class="block w-full lg:w-[55%]">
           <img src="assets/img/phone.png" alt="PhonePe Dashboard"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
@@ -330,7 +348,7 @@
 
       <!-- NIC VAT Registration Portal -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://nicvat.vercel.app/" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://nicvat.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/nicvat.png" alt="NIC VAT Portal Dashboard"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -390,7 +408,7 @@
 
       <!-- Micromouse Maze Game -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://sp201004.github.io/Micromouse_Maze/" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://sp201004.github.io/Micromouse_Maze/" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/maze.png" alt="Micromouse Maze Game"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -443,7 +461,7 @@
 
       <!-- HR Dashboard -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://github.com/sp201004/HR-Analytics-Dashboard" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://github.com/sp201004/HR-Analytics-Dashboard" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/hr.png" alt="HR Dashboard"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -493,7 +511,7 @@
 
       <!-- Drivex -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://drivexstorage.vercel.app/" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://drivexstorage.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/drivex.png" alt="Drivex UI"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -558,7 +576,7 @@
 
       <!-- CarePluse -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
-        <a href="https://carepluse-health.vercel.app/" target="_blank" class="block w-full lg:w-[55%]">
+        <a href="https://carepluse-health.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full lg:w-[55%]">
           <img src="assets/img/care.png" alt="CarePluse Dashboard"
             class="w-full rounded-xl shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl" />
         </a>
@@ -633,7 +651,7 @@
       <!-- NITA ID Card Design (Updated with Clickable Frame) -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/dg2k07o3bJefq0G1rr3lCD/NITA-ID-Card?m=auto&t=u4tbpvKQLiokRI0b-6"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px] mt-2"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/dg2k07o3bJefq0G1rr3lCD/NITA-ID-Card?m=auto&t=u4tbpvKQLiokRI0b-6"
@@ -680,7 +698,7 @@
       <!-- NIC VAT Registration - Figma Design -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/DxvLsJbcMhVJkoP4x3n7pc/NIC-VAT-Registration?node-id=0-1&t=nREUXUSGUDQKCGyZ-1"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px]"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/DxvLsJbcMhVJkoP4x3n7pc/NIC-VAT-Registration?node-id=0-1&t=nREUXUSGUDQKCGyZ-1"
@@ -716,7 +734,7 @@
       <!-- Codejet Components – Community -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/mD0YlJnMCmvgIGYYMg2MFB/Codejet-Components--Community-?m=auto&t=u4tbpvKQLiokRI0b-6"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px]"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/mD0YlJnMCmvgIGYYMg2MFB/Codejet-Components--Community-?m=auto&t=u4tbpvKQLiokRI0b-6"
@@ -753,7 +771,7 @@
       <!-- Drivex System Design -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/s9qHyRGeswOp0jV9i6HuCt/Drivex---Your-Personal-Storage?node-id=0-1&t=vRzBSGDwA8MTOSPN-1"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px]"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/s9qHyRGeswOp0jV9i6HuCt/Drivex---Your-Personal-Storage?node-id=0-1&t=vRzBSGDwA8MTOSPN-1"
@@ -788,7 +806,7 @@
       <!-- CarePluse System Design -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/oMQ25pYGKT1M4uNhgD5o1s/CarePluse-System?m=auto&t=ek0GYMJVvgqnfhHx-1"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px]"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/oMQ25pYGKT1M4uNhgD5o1s/CarePluse-System?m=auto&t=ek0GYMJVvgqnfhHx-1"
@@ -826,7 +844,7 @@
       <!-- Zoom Clone – Figma Design -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/cxkuQ5DlXpLVKNFnMhWdTD/Zoom-Clone?m=auto&t=AqiuLq5A4rcAUn4L-6"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px]"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/cxkuQ5DlXpLVKNFnMhWdTD/Zoom-Clone?m=auto&t=AqiuLq5A4rcAUn4L-6"
@@ -863,7 +881,7 @@
       <!-- Modern Minimal Portfolio – Figma Design -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/VeKNjELEH2NUjN4M6IkKTV/Modern-Minimal-Portfolio?m=auto&t=gsDCibTr09pvqabS-6"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px]"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/VeKNjELEH2NUjN4M6IkKTV/Modern-Minimal-Portfolio?m=auto&t=gsDCibTr09pvqabS-6"
@@ -900,7 +918,7 @@
       <!-- CollabCanvas – Figma Design -->
       <div class="flex flex-col lg:flex-row gap-12 items-center mb-16 w-full">
         <a href="https://www.figma.com/design/0Be2blOeXbpZx2WECrSjkA/CollabCanvas--Flam-Frontend-?node-id=4-2&t=x4ZzWm4FnFRaaOJr-1"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           class="w-full lg:w-[55%] rounded-xl overflow-hidden shadow-lg block transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
           <iframe class="pointer-events-none w-full h-[400px]"
             src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/design/0Be2blOeXbpZx2WECrSjkA/CollabCanvas--Flam-Frontend-?node-id=4-2&t=x4ZzWm4FnFRaaOJr-1"

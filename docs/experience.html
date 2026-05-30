@@ -13,8 +13,18 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experience - Surya Pratap Singh</title>
+  <title>Experience | Surya Pratap Singh</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Silence Tailwind CDN production warning (acceptable for static portfolio).
+    if (window && window.console) {
+      const _w = console.warn;
+      console.warn = function (m) {
+        if (typeof m === 'string' && m.includes('cdn.tailwindcss.com should not be used in production')) return;
+        _w.apply(console, arguments);
+      };
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -96,6 +106,14 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="Surya Pratap Singh | Software Engineer" />
+  <meta property="og:site_name" content="Surya Pratap Singh | Portfolio" />
+  <meta property="og:url" content="https://surya-portfolio-blue.vercel.app/experience.html" />
+  <meta property="og:description" content="Software Engineer Intern @Amdocs | Computer Science graduate from NIT Agartala specializing in Cloud-Native, Kubernetes, AIOps, and Platform Engineering." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://surya-portfolio-blue.vercel.app/assets/img/logo.png" />
 </head>
 
 <body class="montserrat">
@@ -131,6 +149,458 @@
 
         <!-- Timeline Container -->
         <div class="card p-8">
+          <!-- PROJECT 1 (LATEST ONGOING): MSSP - mCloud -->
+          <div class="experience-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+              <div>
+                <h2 class="text-2xl font-semibold text-gray-800">Software Engineer Intern</h2>
+                <h3 class="text-lg text-gray-700 mt-1"><span class="text-blue-600 font-semibold">Amdocs</span></h3>
+              </div>
+              <div class="text-left md:text-right mt-2 md:mt-0">
+                <p class="text-gray-600 font-medium">Present (Ongoing)</p>
+              </div>
+            </div>
+
+            <!-- Project Overview -->
+            <div class="bg-gradient-to-r from-teal-50 to-blue-50 p-6 rounded-lg mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">
+                ☁️ Project: MSSP - mCloud (Private Cloud Provisioning Platform)
+              </h4>
+              <p class="text-gray-700 leading-relaxed">
+                Currently developing an in-house private cloud provisioning platform to replace the deprecated VMware VRA solution. This microservices-based architecture enables self-service deployments across VMware, OpenShift, and Xen, completely removing the dependency on manual Infra team interventions.
+              </p>
+            </div>
+
+            <!-- Current Role & Responsibilities -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">
+                🎯 Current Role & Responsibilities
+              </h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-teal-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Backend Developer</span> - Designing and developing the core RESTful backend APIs and microservices using Node.js.</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-teal-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Security Architect</span> - Integrating Azure Entra ID for SSO, backed by JWT and CSRF protection for robust session management.</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-teal-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Integration Specialist</span> - Orchestrating asynchronous deployment workflows connecting UI, RabbitMQ, Build Agents, and Jenkins.</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-teal-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Database &amp; Automation Engineer</span> - Owning <span class="font-semibold">Oracle DB</span> installations, <span class="font-semibold">SQL refresh automation</span>, and schema migrations across <span class="font-semibold">production environments</span>.</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-teal-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Systems &amp; AI Workflow Engineer</span> - Maintaining Linux/RHEL system hygiene and building <span class="font-semibold">LangChain</span> agents and <span class="font-semibold">n8n</span> automations for <span class="font-semibold">production environments</span> to remove manual ops toil.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Parallel Workstreams -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">
+                🔗 Parallel Workstreams
+              </h4>
+              <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                Alongside mCloud, I drive automation across <span class="font-semibold">production environments</span> — covering database operations, system administration, and AI-assisted workflow pipelines.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <i class="bi bi-database-fill-gear text-red-500"></i>
+                    <h5 class="font-semibold text-gray-800 text-sm">Database Operations</h5>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed">Oracle DB installations, production refresh automation, SQL migrations, and environment sync.</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <i class="bi bi-hdd-stack-fill text-slate-500"></i>
+                    <h5 class="font-semibold text-gray-800 text-sm">System Administration</h5>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed">RHEL / Linux production maintenance, shell-script tooling, and runbook standardization.</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <i class="bi bi-robot text-purple-500"></i>
+                    <h5 class="font-semibold text-gray-800 text-sm">AI Automation</h5>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed">LangChain agents and n8n workflows powering production ops automation.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">
+                🛠️ Tech Stack
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full">Node.js (v22)</span>
+                <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full">Kubernetes (v1.28) & Istio</span>
+                <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full">RabbitMQ</span>
+                <span class="px-3 py-1.5 text-sm bg-purple-100 text-purple-900 rounded-full">Fission (Serverless)</span>
+                <span class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full">Jenkins</span>
+                <span class="px-3 py-1.5 text-sm bg-gray-200 text-gray-900 rounded-full">Hashicorp Vault</span>
+                <span class="px-3 py-1.5 text-sm bg-sky-100 text-sky-900 rounded-full">Docker</span>
+                <span class="px-3 py-1.5 text-sm bg-amber-100 text-amber-900 rounded-full">RHEL 9</span>
+                <span class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full">Oracle DB</span>
+                <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full">SQL</span>
+                <span class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full">Bash / Shell</span>
+                <span class="px-3 py-1.5 text-sm bg-emerald-100 text-emerald-900 rounded-full">LangChain</span>
+                <span class="px-3 py-1.5 text-sm bg-fuchsia-100 text-fuchsia-900 rounded-full">n8n</span>
+              </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                ✨ Key Features Being Implemented
+              </h4>
+
+              <!-- Feature 1 -->
+              <div class="bg-white border-l-4 border-blue-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">1. Decoupled Asynchronous Workflows</h5>
+                <p class="text-gray-700 text-sm mb-2">
+                  Architecting an event-driven flow that pushes validated user catalogue requests to a RabbitMQ queue, allowing independent Build Agents to route tasks to Jenkins without blocking the user interface.
+                </p>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="bg-white border-l-4 border-purple-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">2. Secure SSO Authentication Pipeline</h5>
+                <p class="text-gray-700 text-sm mb-2">
+                  Implementing a secure Azure Entra ID (OIDC) flow that exchanges authorization codes for access tokens, manages secure session states, and issues CSRF-protected JWTs to the client application.
+                </p>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="bg-white border-l-4 border-orange-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">3. Serverless Operations Engine</h5>
+                <p class="text-gray-700 text-sm mb-2">
+                  Integrating the Fission serverless framework to process dynamic, short-lived tasks (e.g., vCenter interactions, Kubernetes API calls) directly from the Node.js backend.
+                </p>
+              </div>
+
+              <!-- Feature 4 -->
+              <div class="bg-white border-l-4 border-teal-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">4. Web SSH & Housekeeper Services</h5>
+                <p class="text-gray-700 text-sm mb-2">
+                  Building a browser-based Web SSH terminal for secure Linux instance access, alongside a Node.js Housekeeper service to automate batch tasks like expiring snapshots and lease renewals.
+                </p>
+              </div>
+
+              <!-- Feature 5 -->
+              <div class="bg-white border-l-4 border-green-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">5. Instance Lifecycle &amp; Hardware Management</h5>
+                <p class="text-gray-700 text-sm mb-2">
+                  End-user controls for the full deployment lifecycle — power management, snapshot create/restore, dynamic hardware sizing, and on-demand storage attach — surfaced directly through the portal UI.
+                </p>
+              </div>
+            </div>
+
+            <!-- Challenges & Solutions -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                🧩 Ongoing Challenges & Solutions
+              </h4>
+              <div class="space-y-4">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <p class="text-red-800 font-semibold mb-2">⚠️ Challenge: Overcoming VMware VRA upgrade failures and vendor lock-in</p>
+                  <p class="text-gray-700 text-sm mb-2"><span class="font-semibold">Solution:</span> Designing a flexible, custom microservices architecture that natively abstracts infrastructure providers, supporting OpenShift and Xen alongside VMware.</p>
+                  <p class="text-blue-700 text-sm font-medium">🔄 Status: Integration layer currently in development</p>
+                </div>
+
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <p class="text-red-800 font-semibold mb-2">⚠️ Challenge: Providing real-time frontend updates for long-running Jenkins builds</p>
+                  <p class="text-gray-700 text-sm mb-2"><span class="font-semibold">Solution:</span> Utilizing Server-Sent Events (SSE) combined with reactive client-side state management to push live deployment statuses directly to the user.</p>
+                  <p class="text-blue-700 text-sm font-medium">🔄 Status: SSE pipeline currently being tested</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Target Impact -->
+            <div class="bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-lg p-6 mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                📊 Target Impact & Business Value
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-center">
+                  <i class="bi bi-people-fill text-3xl text-teal-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-teal-700">360+</p>
+                    <p class="text-sm text-gray-700">MIS users globally onboarded</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="bi bi-clock-history text-3xl text-teal-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-teal-700">Zero</p>
+                    <p class="text-sm text-gray-700">Infra Team wait times for provisioning</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="bi bi-diagram-3 text-3xl text-teal-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-teal-700">100%</p>
+                    <p class="text-sm text-gray-700">Vendor-agnostic infrastructure</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="bi bi-shield-lock text-3xl text-teal-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-teal-700">Secure</p>
+                    <p class="text-sm text-gray-700">OIDC Auth & Vault Secrets</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="bi bi-cpu text-3xl text-teal-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-teal-700">Scale</p>
+                    <p class="text-sm text-gray-700">Event-driven asynchronous limits</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Learnings -->
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                🎓 Current Learnings
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-blue-800 mb-2">💻 Technical</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Server-Sent Events (SSE)</li>
+                    <li>• Node.js microservices</li>
+                    <li>• Fission serverless functions</li>
+                  </ul>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-purple-800 mb-2">⚙️ Architecture</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• RabbitMQ message queues</li>
+                    <li>• Istio Service Mesh routing</li>
+                    <li>• Decoupled system design</li>
+                  </ul>
+                </div>
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-orange-800 mb-2">🔒 Security</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Azure Entra ID / OIDC</li>
+                    <li>• Hashicorp Vault security</li>
+                    <li>• JWT & CSRF tokens</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confidentiality Disclaimer -->
+            <div class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg text-center shadow-inner">
+              <p class="text-sm text-gray-700 italic">
+                <i class="bi bi-shield-lock-fill text-gray-500 mr-2"></i>
+                <strong>Confidentiality Note:</strong> Due to Amdocs security policies and intellectual property agreements, the source code and internal architecture details for this project are confidential and cannot be shared publicly. 
+                <span class="block text-xs text-gray-500 mt-2">I strictly adhere to corporate compliance and information security standards.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+            
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+              <div>
+                <h2 class="text-2xl font-semibold text-gray-800">Software Engineer Intern</h2>
+                <h3 class="text-lg text-gray-700 mt-1"><span class="text-blue-600 font-semibold">Amdocs</span></h3>
+              </div>
+              <div class="text-left md:text-right mt-2 md:mt-0">
+                <p class="text-gray-600 font-medium">Completed - April 2026</p>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3 flex items-center flex-wrap gap-2">
+                <span>🚀 Project: Design &amp; Implementation of an Intelligent IT Infrastructure Operations Platform — Kubernetes, Automation &amp; Agentic AI</span>
+                <span class="px-2.5 py-0.5 text-xs bg-green-100 text-green-800 rounded-full font-semibold border border-green-200">(Project Completed)</span>
+              </h4>
+              <p class="text-gray-700 leading-relaxed">
+                Designed and implemented an end-to-end <span class="font-semibold">AIOps platform</span> for Kubernetes that integrated observability, anomaly detection, and deterministic automation into a closed-loop operational workflow driven by <span class="font-semibold">Agentic AI</span> — minimizing manual IT intervention and standardizing incident response.
+              </p>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">
+                🎯 My Role & Responsibilities
+              </h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-blue-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Platform Engineer</span> - Designed the core <span class="font-semibold">Agentic AI</span> architecture using FastAPI to monitor and orchestrate Kubernetes clusters.</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-blue-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Automation Specialist</span> - Authored Ansible playbooks (with <span class="font-semibold">kubectl fallback</span>) for deterministic self-healing actions like pod restart, scaling, and rolling redeploys.</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="bi bi-check-circle-fill text-blue-500 mr-2 mt-1"></i>
+                  <span><span class="font-semibold">Data Engineer</span> - Configured Prometheus and ELK stack pipelines for real-time metric and log ingestion.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">
+                🛠️ Tech Stack
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 text-sm bg-blue-100 text-blue-900 rounded-full hover:bg-blue-200 transition duration-300">Kubernetes</span>
+                <span class="px-3 py-1.5 text-sm bg-indigo-100 text-indigo-900 rounded-full hover:bg-indigo-200 transition duration-300">kubectl</span>
+                <span class="px-3 py-1.5 text-sm bg-purple-100 text-purple-900 rounded-full hover:bg-purple-200 transition duration-300">Ansible</span>
+                <span class="px-3 py-1.5 text-sm bg-yellow-100 text-yellow-900 rounded-full hover:bg-yellow-200 transition duration-300">Python (FastAPI)</span>
+                <span class="px-3 py-1.5 text-sm bg-green-100 text-green-900 rounded-full hover:bg-green-200 transition duration-300">Node.js (Proxy API)</span>
+                <span class="px-3 py-1.5 text-sm bg-orange-100 text-orange-900 rounded-full hover:bg-orange-200 transition duration-300">Prometheus & Grafana</span>
+                <span class="px-3 py-1.5 text-sm bg-red-100 text-red-900 rounded-full hover:bg-red-200 transition duration-300">ELK Stack</span>
+                <span class="px-3 py-1.5 text-sm bg-teal-100 text-teal-900 rounded-full hover:bg-teal-200 transition duration-300">Machine Learning (Isolation Forest)</span>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                ✨ Key Features & Achievements
+              </h4>
+              <div class="bg-white border-l-4 border-blue-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">1. Closed-Loop AIOps Pipeline</h5>
+                <p class="text-gray-700 text-sm mb-2">Developed an autonomous workflow (Observe → Detect → Decide → Remediate → Verify) that continuously ingested infrastructure signals to monitor cluster health.</p>
+                <div class="bg-blue-50 border border-blue-200 rounded p-2 mt-2">
+                  <p class="text-blue-800 text-sm font-medium">📈 Impact: Eliminated manual monitoring delays through 24/7 autonomous observation.</p>
+                </div>
+              </div>
+              <div class="bg-white border-l-4 border-purple-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">2. Multi-Method Anomaly Detection</h5>
+                <p class="text-gray-700 text-sm mb-2">Implemented hybrid detection models combining statistical thresholds (Z-Score) and Machine Learning (Isolation Forest) to accurately flag CPU/Memory anomalies.</p>
+                <div class="bg-purple-50 border border-purple-200 rounded p-2 mt-2">
+                  <p class="text-purple-800 text-sm font-medium">📈 Impact: Drastically reduced false positives compared to traditional rule-based alerts.</p>
+                </div>
+              </div>
+              <div class="bg-white border-l-4 border-teal-500 p-4 mb-4 rounded-r-lg shadow-sm">
+                <h5 class="font-semibold text-gray-800 mb-2">3. Automated Remediation Engine</h5>
+                <p class="text-gray-700 text-sm mb-2">Built a self-healing mechanism that triggered specific Ansible playbooks to resolve issues dynamically (e.g., restarted crashed pods, scaled nodes) without human intervention.</p>
+                <div class="bg-teal-50 border border-teal-200 rounded p-2 mt-2">
+                  <p class="text-teal-800 text-sm font-medium">📈 Impact: Standardized incident response, preventing human error during critical outages.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                🧩 Challenges & Solutions
+              </h4>
+              <div class="space-y-4">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <p class="text-red-800 font-semibold mb-2">⚠️ Challenge: Alert fatigue due to false positives in metric alert systems</p>
+                  <p class="text-gray-700 text-sm mb-2"><span class="font-semibold">Solution:</span> Integrated the Isolation Forest ML algorithm to intelligently distinguish between expected traffic spikes and actual infrastructure anomalies.</p>
+                  <p class="text-green-700 text-sm font-medium">✅ Result: Increased alert accuracy and operational efficiency</p>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <p class="text-red-800 font-semibold mb-2">⚠️ Challenge: Safely executing complex recovery actions at scale</p>
+                  <p class="text-gray-700 text-sm mb-2"><span class="font-semibold">Solution:</span> Utilized Ansible for deterministic, repeatable playbooks rather than writing ad-hoc shell scripts, which ensured reliable cluster states.</p>
+                  <p class="text-green-700 text-sm font-medium">✅ Result: 100% safe and reproducible remediation workflows</p>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <p class="text-red-800 font-semibold mb-2">⚠️ Challenge: Validating end-to-end behavior under realistic failure modes</p>
+                  <p class="text-gray-700 text-sm mb-2"><span class="font-semibold">Solution:</span> Built a controlled fault-injection harness covering <span class="font-semibold">5 scenarios</span> — CPU saturation, memory pressure, crash loops, scheduling stress, and traffic surge — measured against detection / decision / remediation latency.</p>
+                  <p class="text-green-700 text-sm font-medium">✅ Result: Demonstrated reliable detection &amp; bounded remediation across all scenarios</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6 mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                📊 Overall Impact & Results
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-center">
+                  <i class="bi bi-clock-history text-3xl text-blue-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-blue-700">Faster</p>
+                    <p class="text-sm text-gray-700">Mean Time To Repair (MTTR)</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="bi bi-robot text-3xl text-blue-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-blue-700">Zero</p>
+                    <p class="text-sm text-gray-700">Human intervention for basic faults</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="bi bi-shield-check text-3xl text-blue-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-blue-700">High</p>
+                    <p class="text-sm text-gray-700">Cluster Reliability</p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <i class="bi bi-graph-up text-3xl text-blue-600 mr-3"></i>
+                  <div>
+                    <p class="font-bold text-2xl text-blue-700">Enhanced</p>
+                    <p class="text-sm text-gray-700">Observability with ELK/Prometheus</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="text-lg font-semibold text-gray-800 mb-4">
+                🎓 Key Learnings
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-blue-800 mb-2">💻 Technical</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Advanced Kubernetes orchestration</li>
+                    <li>• ML model integration in ops</li>
+                    <li>• FastAPI backend development</li>
+                  </ul>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-purple-800 mb-2">⚙️ Operational</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Deterministic automation (Ansible)</li>
+                    <li>• Centralized logging (ELK)</li>
+                    <li>• Metric alerting (Prometheus)</li>
+                  </ul>
+                </div>
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-orange-800 mb-2">🧠 Strategic</h5>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• System Reliability Engineering</li>
+                    <li>• Agentic AI workflows</li>
+                    <li>• End-to-end system design</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confidentiality Disclaimer -->
+            <div class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-lg text-center shadow-inner">
+              <p class="text-sm text-gray-700 italic">
+                <i class="bi bi-shield-lock-fill text-gray-500 mr-2"></i>
+                <strong>Confidentiality Note:</strong> Due to Amdocs security policies and intellectual property agreements, the source code and internal architecture details for this project are confidential and cannot be shared publicly. 
+                <span class="block text-xs text-gray-500 mt-2">I strictly adhere to corporate compliance and information security standards.</span>
+              </p>
+            </div>
+          </div>
+
           <!-- Experience Item 1: NIC Internship -->
           <div class="experience-card">
             <div class="timeline-dot"></div>
