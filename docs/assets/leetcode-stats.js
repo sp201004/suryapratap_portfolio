@@ -1,17 +1,24 @@
 // =====================================================================
 // LeetCode Stats — live updater
-// Sources:
-//   • leetcode-api-faisalshohag.vercel.app — solved breakdown (fast, Vercel)
-//   • coderme.vercel.app                   — current contest rating (fast)
-//   • alfa-leetcode-api.onrender.com       — contest history + global rank + badge
-// Render free tier has cold starts; we use a short timeout + one retry so
-// the slowest endpoint doesn't hang the page. Hardcoded HTML fallbacks remain
-// visible until live data lands.
+// Primary Source:
+//   • leetcode-api-pied.vercel.app/user/<username>
+//     → solved counts (easy/medium/hard/total), contest badge, ranking
+// Secondary Sources:
+//   • leetcode-api-faisalshohag.vercel.app — total problem counts per
+//     difficulty (denominators: 950, 2069, 943 etc.)
+//   • alfa-leetcode-api.onrender.com — contest rating + max rating
+// Hardcoded HTML fallbacks remain visible until live data lands.
 // =====================================================================
 
 const LEETCODE_USERNAME = "sp0104";
-const FAISAL_API   = `https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USERNAME}`;
-const CODERME_API  = `https://coderme.vercel.app/leetcode/${LEETCODE_USERNAME}`;
+
+// Primary — solved counts, badge, ranking
+const PRIMARY_API = `https://leetcode-api-pied.vercel.app/user/${LEETCODE_USERNAME}`;
+
+// Total available problems per difficulty (denominators)
+const FAISAL_API = `https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USERNAME}`;
+
+// Contest rating history (max rating calculation)
 const ALFA_CONTEST = `https://alfa-leetcode-api.onrender.com/userContestRankingInfo/${LEETCODE_USERNAME}`;
 
 // Aborts long-running requests so a sleeping Render dyno can't block UI.
@@ -44,44 +51,64 @@ function setText(id, value) {
   el.textContent = typeof value === "number" ? value.toLocaleString() : value;
 }
 
-function updateTotalsDenominators(data) {
-  const setDenom = (id, count) => {
-    const el = document.getElementById(id);
-    if (el && typeof count === "number") {
-      el.textContent = count.toLocaleString();
-    }
-  };
-  setDenom("total-easy", data.totalEasy);
-  setDenom("total-medium", data.totalMedium);
-  setDenom("total-hard", data.totalHard);
+// Helper to find a difficulty entry from the submitStats arrays
+function findByDifficulty(arr, diff) {
+  return arr?.find(e => e.difficulty === diff);
 }
 
 async function updateLeetCodeStats() {
-  // Run all three in parallel so the slow one doesn't hold up the fast ones.
+  // Run primary + secondary in parallel
   await Promise.allSettled([
-    // 1) Solved breakdown — Faisal (Vercel, fast)
-    fetchJSON(FAISAL_API).then(stats => {
-      setText("total-solved", stats.totalSolved);
-      setText("easy-solved",  stats.easySolved);
-      setText("medium-solved", stats.mediumSolved);
-      setText("hard-solved",  stats.hardSolved);
-      updateTotalsDenominators(stats);
-      console.log("✅ LeetCode: solved counts updated");
-    }).catch(err => console.warn("solved fetch failed:", err.message)),
+    // ─── 1) Primary API — solved counts, totals, badge, ranking ───
+    fetchJSON(PRIMARY_API).then(data => {
+      const ac = data?.submitStats?.acSubmissionNum;
 
-    // 2) Current contest rating — coderme (Vercel, fast)
-    fetchJSON(CODERME_API).then(cm => {
-      if (typeof cm?.rating === "number") {
-        setText("contest-rating", Math.round(cm.rating));
+      if (Array.isArray(ac)) {
+        const all    = findByDifficulty(ac, "All");
+        const easy   = findByDifficulty(ac, "Easy");
+        const medium = findByDifficulty(ac, "Medium");
+        const hard   = findByDifficulty(ac, "Hard");
+
+        if (all) {
+          setText("total-solved",   all.count);
+          setText("about-dsa-count", all.count);  // "About Me" section
+        }
+        if (easy)   setText("easy-solved",    easy.count);
+        if (medium) setText("medium-solved",  medium.count);
+        if (hard)   setText("hard-solved",    hard.count);
       }
-      console.log("✅ LeetCode: contest rating updated");
-    }).catch(err => console.warn("contest rating fetch failed:", err.message)),
 
-    // 3) Contest rank + max rating + badge — alfa (Render, slower; retry once)
+      // Contest badge
+      if (data?.contestBadge?.name) {
+        setText("contest-badge", data.contestBadge.name);
+        setText("about-badge",   data.contestBadge.name);  // "About Me" section
+      }
+
+      // Global ranking
+      if (typeof data?.profile?.ranking === "number") {
+        setText("global-rank", data.profile.ranking);
+      }
+
+      console.log("✅ LeetCode [primary]: solved counts, badge, rank updated");
+    }).catch(err => console.warn("primary API failed:", err.message)),
+
+    // ─── 2) Faisal API — total problem counts (denominators) ───
+    fetchJSON(FAISAL_API).then(data => {
+      if (typeof data?.totalEasy === "number")   setText("total-easy",   data.totalEasy);
+      if (typeof data?.totalMedium === "number") setText("total-medium", data.totalMedium);
+      if (typeof data?.totalHard === "number")   setText("total-hard",   data.totalHard);
+      console.log("✅ LeetCode [faisal]: total problem counts updated");
+    }).catch(err => console.warn("faisal API failed:", err.message)),
+
+    // ─── 3) Alfa API — contest rating + max rating ───
     fetchJSONRetry(ALFA_CONTEST).then(c => {
-      const ranking = c?.userContestRanking?.globalRanking;
-      if (typeof ranking === "number") setText("global-rank", ranking);
+      const rating = c?.userContestRanking?.rating;
+      if (typeof rating === "number") {
+        setText("contest-rating", Math.round(rating));
+        setText("about-contest-rating", Math.round(rating));  // "About Me" section
+      }
 
+      // Compute max from history
       const history = c?.userContestRankingHistory;
       if (Array.isArray(history) && history.length) {
         const peak = history.reduce(
@@ -90,9 +117,14 @@ async function updateLeetCodeStats() {
         );
         if (peak > 0) setText("max-rating", Math.round(peak));
       }
-      const badge = c?.userContestRanking?.badge?.name;
-      if (badge) setText("contest-badge", badge);
-      console.log("✅ LeetCode: contest rank + max + badge updated");
+
+      // Global ranking from contest data (more contest-specific; override if available)
+      const contestRank = c?.userContestRanking?.globalRanking;
+      if (typeof contestRank === "number") {
+        setText("global-rank", contestRank);
+      }
+
+      console.log("✅ LeetCode [alfa]: contest rating + max updated");
     }).catch(err => console.warn("contest history fetch failed:", err.message)),
   ]);
 }
